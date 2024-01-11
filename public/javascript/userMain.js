@@ -1,3 +1,5 @@
+const { default: fundAccount } = require("razorpay/dist/types/fundAccount");
+
 // add to cart from icon
 function addToCart(productId) {
   $.ajax({
@@ -103,6 +105,19 @@ function updateCartNumber(newCount) {
   }
 }
 
+// function to delete cart items
+function deleteCartItems(productId) {
+  const rowToDelete = document.getElementById(productId);
+  if (rowToDelete) {
+    const siblingRow = rowToDelete.nextElementSibling; 
+    if (siblingRow) {
+      siblingRow.remove();
+    }
+    rowToDelete.remove();
+  }
+}
+
+
 // Function to delete the row from the UI
 function deleteRow(productId) {
   const rowToDelete = document.getElementById(productId);
@@ -134,7 +149,8 @@ function confirmDelete(productId) {
       })
       .then((data) => {
         if (data.success) {
-          deleteRow(productId);
+          console.log('hy');
+          deleteCartItems(productId);
           updateSubtotal(data);
           updateCartNumber(data);
 
