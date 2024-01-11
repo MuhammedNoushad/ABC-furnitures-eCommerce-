@@ -1,0 +1,161 @@
+<%- include("../layouts/users/header") %>
+
+
+<% let subTotal=0; %>
+
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-title">
+                        <h2>Checkout</h2>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                          Add New Address
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-title">Click below to create a new address</h5>
+                          <a href="/add-new-address" class="btn btn-custom-orange">Create Address</a>
+                        </div>
+                      </div>
+                      <br><br>
+
+                      <% if (!address || address.length === 0) { %>
+                        <div class="card">
+                          <div class="card-body">
+                            
+                              Add a address to checkout.
+                          </div>
+                        </div>
+                       <% } else { %>
+                        
+                        
+                        <form  id="orderFormData">
+                            <div class="card">
+                                <div class="card-header">
+                                    Your addresses
+                                </div>
+                                <div class="card-body">
+                        
+                                    <% address.forEach(address => { %>
+                        
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="address" value="<%= address._id %>" checked>
+                                            <label class="form-check-label" for="addressRadio1">
+                                                <span><span><%= address.firstName %></span> <span><%= address.streetAddress %></span></span>
+                                            </label>
+                                        </div>
+                                        <br>
+                                        <span>
+                                            <a href="/edit-address?id=<%= address._id %>" class="edit-link">Edit</a>
+                                            <span class="p-4"><a href="/delete-address?id=<%= address._id %>" class="delete-link">Delete</a></span>
+                                        </span>
+                                        <hr class="border border-warning border-2 opacity-50">
+                                    <% }) %>
+                        
+                                </div>
+                            </div>
+                            <% } %>
+                            
+                        </div>
+                    </div>
+                    <% for( let i = 0; i < cart.length; i++ ) { %>
+                        <% subTotal = subTotal + (Number(products[i].salePrice) * cart[i].quantity) ; %>
+                        <% } %>
+                        <div class="col-12 col-lg-4">
+                            <div class="cart-summary">
+                                 <!-- Apply Coupon Section -->
+                                 <div class="apply-coupon-section mb-30 summary-table">
+                                    <div class="custom-btn btn btn-warning" onclick="openCouponModal()">
+                                        <div>
+                                            <span><h6>Apply Coupon</h6></span>
+                                            <p>See all the available coupons</p>
+                                        </div>
+                                        <span><i class="fas fa-angle-right"></i></span>
+                                    </div>
+                                    <p id="couponMessageError" class="text-danger"></p>
+                                    <p id="couponMessage" class="text-success"></p>
+                                    <a id="removeCoupon" class="text-danger" href="#" onclick="removeCoupon()"  style="display: none;">remove coupon</a>
+                                </div>
+
+                                <h5>Cart Total</h5>
+                                <ul class="summary-table">
+                                    <li id="subtotal"><span>subtotal:</span> <span><%= `₹ ${subTotal.toLocaleString()}`  %></span></li>
+                                    <li id="couponDiscount" style="display: none;"><span>Coupon Discount:</span> <span id="couponDiscountAmount"></span></li>
+                                    <li id="delivery"><span>delivery:</span> <span>Free</span></li>
+                                    <li id="total"><span>total:</span> <span><%= `₹ ${subTotal.toLocaleString()}`  %></span></li>
+                                </ul>
+                                
+                                
+                               
+                        
+                                <div class="payment-method">
+                                       <!-- Wallet  -->
+                                       <div class="custom-control custom-radio mr-sm-2">
+                                        <input type="radio" name="payment" class="custom-control-input" id="wallet">
+                                        <label class="custom-control-label pl-4" for="wallet">Wallet <img style="width: 15px;" class="ml-15" src="/public/assets/img/core-img/wallet.png" alt="cash on delivery"></label>
+                                        <div class="pb-4 ">Available balance : <strong><%= wallet.balance %></strong></div>
+                                        <p id="walletError" class="text-danger"></p>
+                                    </div>
+                                    <!-- Cash on delivery -->
+                                    <div class="custom-control custom-radio mr-sm-2">
+                                        <input type="radio" name="payment" class="custom-control-input" value="Cash on Delivery" id="cod" checked>
+                                        <label class="custom-control-label pl-4" for="cod">Cash on Delivery<img style="width: 25px;" class="ml-15" src="/public/assets/img/core-img/cash-on-delivery.png" alt="cash on delivery"></label>
+                                    </div>
+                                    <!-- Razorpay -->
+                                    <div class="custom-control custom-radio mr-sm-2">
+                                        <input type="radio" name="payment" class="custom-control-input" id="Razorpay">
+                                        <label class="custom-control-label pl-4" for="Razorpay">Razorpay <img class="ml-15" src="/public/assets/img/core-img/paypal.png" alt="Razorpay"></label>
+                                    </div>
+                                </div>
+                                <div class="cart-btn mt-100">
+                                    <a id="checkout" class="btn btn-warning" onclick="checkout('<%=address.length %>','<%= cart.length %>')">Check out</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+        </div>
+    </div>
+</div>
+</div>
+
+ <!-- Coupon Modal -->
+ <div id="couponModal" class="coupon-modal">
+    <!-- Add your coupon content here -->
+    <div class="list-group">
+
+        <% if (!coupons || coupons.length === 0) { %>
+            
+            <img src="/public/assets/img/core-img/empty.jpg" style="width: 250px;" alt="No Coupons Available">
+            <% } else { %>
+            
+         
+    <h3 >Available Coupons</h3>
+        <% coupons.forEach(coupon => { %>
+            <a href="#" onclick="applyCoupon('<%= coupon._id %>')" class="list-group-item list-group-item-action list-group-item-warning " >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 style="color: rgb(0, 0, 0);" class="mb-1"><strong><%= coupon.couponCode %></strong></h5>
+                <small>Get <%= coupon.discountAmount %> off using <%= coupon.couponCode %></small>
+              </div>
+              <p class="mb-1"><%= coupon.description %>.</p>
+              <small>T&C applied</small>
+            </a>
+         
+        <% }) %>
+            
+
+            <% } %>
+      </div>
+      <br><br>
+    <button class="btn btn-outline-danger" onclick="closeCouponModal()">Close</button>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="overlay"></div>
+</div>
+
+<%- include("../layouts/users/footer") %>

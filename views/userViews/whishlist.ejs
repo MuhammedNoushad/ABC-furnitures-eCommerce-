@@ -1,0 +1,97 @@
+<%- include("../layouts/users/header") %>
+
+<% let subTotal = 0; %>
+
+
+
+        <div class="cart-table-area section-padding-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="cart-title mt-50 headers">
+                            <h2 >Wishlist</h2>
+                        </div>
+                        
+
+                        <div class="cart-table clearfix">
+                            <div id="emptyCartImage" class="empty-cart-message" style="display: none; flex-direction: column; align-items: center; justify-content: center; height: 400px;">
+                                <div class="m-b-20"><img src="/public/assets/img/core-img/empty wishlist.png" style="width: 400px;" alt=""></div>
+                                    <p class="wishlistText" >Seems like you don't have any wishes yet 🥺</p>
+                            </div>
+                            <% if (!wishlist || wishlist.length === 0) { %>
+
+                                <div  class="empty-cart-message" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 400px;">
+                                    <div class="m-b-20"><img src="/public/assets/img/core-img/empty wishlist.png" style="width: 400px;" alt=""></div>
+                                    <p class="wishlistText" >Seems like you don't have any wishes yet 🥺</p>
+                                   
+                                </div>
+                                
+                                <% } else if (products && Array.isArray(products) && products.length > 0) { %>
+
+                            <table id="cartTable" class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table">
+
+                                    <% for( let i = 0; i < products.length; i++ ) { %>
+                                        
+                                        <tr id="<%= products[i]._id %>">
+                                            <td class="cart_product_img">
+                                                <a href="/products/product-details?id=<%= products[i]._id %>"><img src="/public/assets/uploads/<%= products[i].image[0].filename %>" alt="Product"></a>
+                                            </td>
+                                            <td class="cart_product_desc">
+                                                <h5><%= products[i].productName %></h5>
+                                            </td>
+                                            <td class="price">
+                                                <% if (products[i].salePrice === products[i].regularPrice) { %>
+                   
+                                                    <span class="product-price">₹<%= products[i].salePrice.toLocaleString() %></span>
+                                                    <% } else { %>
+                                                      <span class="product-price"><span>₹<%= products[i].salePrice.toLocaleString() %></span>
+                                                        <span class="oldPrice">₹<%= products[i].regularPrice.toLocaleString() %></span></span>
+                                                  <% } %>
+                                            </td>
+                                            <td colspan="4" style="text-align: center;">
+                                                <div style="display: flex; justify-content: center; ">
+                                                    <div class="mb-30 text-danger"><i class="fa-solid fa-trash"></i><a  href="javascript:void(0);" onclick="confirmDeleteWishlist('<%= products[i]._id %>')">Remove</a></div>
+                                                </div>
+                                            </td>
+                                         
+                                        </tr>
+                                        
+                                        <% } %>
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                                <% } %>
+                            </div>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+   
+
+    <!-- model confirm delete  -->
+
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+          <p>Are you sure you want to delete this item?</p>
+          <div class="modal-btns">
+            <button id="confirmBtn" class="modal-btn modal-btn-confirm">Delete</button>
+            <button id="cancelBtn" class="modal-btn modal-btn-cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+<%- include("../layouts/users/footer") %>
+    

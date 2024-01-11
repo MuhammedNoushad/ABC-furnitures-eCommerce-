@@ -1,0 +1,103 @@
+<%- include("../layouts/users/header") %>
+
+<div class="shop_sidebar_area">
+  <!-- ##### Single Widget ##### -->
+  <div class="widget catagory mb-50">
+    <!-- Widget Title -->
+    <h2 class="widget-title mb-100 text-warning"><%= user.username %></h2>
+
+    <!--  Catagories  -->
+    <div class="catagories-menu">
+      <ul>
+        <li class="mt-30"><a href="/user-profile">Profile</a></li>
+        <li class="mt-30 active"><a href="/user-orders">My orders</a></li>
+        <li class="mt-30"><a href="/user-address">Manage address</a></li>
+        <li class="mt-30"><a href="/user-wishlist">My wishlist</a></li>
+        <li class="mt-30"><a href="/user-wallet">My wallet</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="profile ml-100">
+  <div class="container">
+    <% if (orders && orders.length > 0) { %>
+      <h3>Your Orders</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="table-warning">
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Product Image</th>
+              <th scope="col">Product Name (Quantity)</th>
+              <th scope="col">Price</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let i = orders.length - 1; i >= 0; i--) { %>
+              <% const order = orders[i]; %>
+              <% for (let j = 0; j < order.products.length; j++) { %>
+                <% const product = order.products[j]; %>
+
+                <tr>
+                  <% if (j === 0) { %>
+                    <!-- Display Order ID only for the first product in an order -->
+                    <td rowspan="<%= order.products.length %>">
+                      <a href="/order-details/<%= order.products[0].productId._id %>/<%= order._id %>">
+                        <strong><%= order._id %></strong>
+                      </a>
+                    </td>
+                  <% } %>
+                  <td>
+                    <a href="/order-details/<%= product.productId._id %>/<%= order._id %>">
+                      <img
+                        src="/public/assets/uploads/<%= product.productId.image[0].filename %>"
+                        alt="<%= product.productId.productName %>"
+                        class="img-fluid"
+                        style="max-width: 100px"
+                      />
+                    </a>
+                  </td>
+                  <td><%= product.productId.productName %> (<%= product.quantity %>)</td>
+                  <td><%= product.price %></td>
+                  <td><%= product.productStatus %></td>
+                </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <!-- Show image in the middle if there are no orders -->
+      <div class="empty-orders-message" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 400px;">
+        <div><img src="/public/assets/img/core-img/empty order.jpg" alt="No Orders" style="width: 330px;" /></div>
+        <div style="margin-top: 20px;">
+          <h4>No orders found.</h4>
+        </div>
+      </div>
+    <% } %>
+
+    <!-- pagination  -->
+    <div class="row">
+      <div class="col-12">
+        <!-- Pagination -->
+        <nav aria-label="navigation">
+          <ul class="pagination justify-content-end mt-50">
+          </li>
+          
+          <% for( let i = 1; i <= totalNumberOfPages; i++ ) { %>
+            
+            <li class="page-item <%= i == page ? 'active' : '' %>">
+              <a class="page-link" href="/user-orders?page=<%= i %>"><%= i %></a>
+            <% } %>
+
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include("../layouts/users/footer") %>

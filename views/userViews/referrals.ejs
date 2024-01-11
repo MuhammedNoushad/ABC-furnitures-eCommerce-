@@ -1,0 +1,23 @@
+<%- include("../layouts/users/header") %>
+
+<div class="products-catagories-area clearfix">
+    <div class="amado-pro-catagory clearfix">
+        <div class="top-image-section mt-70">
+            <img src="/public/assets/img/core-img/referral.jpg" style="width: 650px;" alt="Top Image">
+            <div class="referral-info">
+                <h1>Refer and Earn</h1>
+                <p>Refer your friends and earn rewards! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac convallis lorem, eget euismod nisl.</p>
+                <p>Share your referral link and earn<strong> ₹100 </strong>on your wallet for each successfull registration 🎊.</p>
+                <div class="input-container">
+                    <input type="text" id="referralLink" class="form-control" value="http://localhost:3000/user-registration?referral=<%= user.referralCode %>">
+                    <a href="#" onclick="shareReferralLink()"><i class="fas fa-share-alt"></i></a>
+                  </div>
+                  
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include("../layouts/users/footer") %>

@@ -1,0 +1,212 @@
+<%- include("../layouts/users/header") %>
+
+<div class="products-catagories-area">
+  <div class="amado-pro-catagory">
+    <div class="wrap-login100">
+      <form
+        id="verificationForm"
+        class="login100-form validate-form p-l-55 p-r-55 p-t-178"
+      >
+        <span class="login100-form-title">Thank you for Sign In </span>
+
+        <div class="text-center m-b-16">
+          Please Check Your Email for the Verification Code.
+        </div>
+        <div
+          class="wrap-input100 validate-input m-b-16"
+          data-validate="Please enter otp"
+        >
+          <input
+            class="input100"
+            type="text"
+            name="otp"
+            placeholder="Enter OTP Here"
+            id="inputOtp"
+            required
+          />
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button
+            id="verify"
+            type="button"
+            class="login100-form-btn"
+            onclick="submitForm()"
+          >
+            Verify
+          </button>
+        </div>
+
+        <div class="row">
+          <div class="col-auto mr-auto" id="timeoutDisplay">
+            <p>Time remaining:<span class="p-2" id="divCounter">02:00</span></p>
+          </div>
+          <div class="col-auto mr-auto" id="afterTimeoutDisplay">
+            <p>Don't recieve the code?</p>
+          </div>
+
+          <div id="resendOtp" class="flex-col-c p-t-20 p-b-20 col-auto">
+            <a href="#" class="txt3" onclick="resendOtp()"> resend otp </a>
+          </div>
+        </div>
+        <br /><br />
+        <div class="flex-col-c p-t-8 p-b-40">
+          <a href="/" class="txt3">
+            <i class="fa-solid fa-arrow-left"></i>back to home
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+  var test = 60;
+  var value;
+  var interval;
+  var hasTimerExpired = false;
+
+  // Function to start or resume the timer
+  function startTimer() {
+    if (sessionStorage.getItem("counter2") && !hasTimerExpired) {
+      value = parseInt(sessionStorage.getItem("counter2"));
+    } else {
+      value = test;
+    }
+
+    $("#divCounter").text(value);
+
+    interval = setInterval(function () {
+      counter2();
+    }, 1000);
+  }
+
+  function counter2() {
+    if (value === 0 && !hasTimerExpired) {
+      clearInterval(interval);
+      // Update UI elements and disable input
+      document.getElementById("timeoutDisplay").style.display = "none";
+      document.getElementById("afterTimeoutDisplay").style.display = "block";
+      document.getElementById("resendOtp").style.display = "block";
+      document.getElementById("inputOtp").disabled = true;
+      hasTimerExpired = true;
+    } else {
+      value = value - 1;
+      sessionStorage.setItem("counter2", value);
+    }
+
+    var minutes = Math.floor(value / 60);
+      var seconds = value % 60;
+      if (minutes < 10) minutes = "0" + minutes;
+      if (seconds < 10) seconds = "0" + seconds;
+      $("#divCounter").text(minutes + ":" + seconds);
+  }
+
+  // Function to restart the timer (only for resend OTP)
+  function restartTimer() {
+    clearInterval(interval);
+    hasTimerExpired = false; // Reset expiration flag
+    sessionStorage.removeItem("counter2");
+    startTimer();
+  }
+
+  // Function to resend OTP
+  function resendOtp() {
+    fetch("/resend-otp", {
+      method: "GET",
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        if (data.success) {
+          toastr.success("Otp resend successful");
+        }
+      });
+
+    // Set the flag to indicate resend OTP is called
+    isResendingOtp = true;
+
+    // Restart the timer
+    restartTimer();
+
+    // Reset the flag
+    isResendingOtp = false;
+
+    document.getElementById("timeoutDisplay").style.display = "block";
+    document.getElementById("afterTimeoutDisplay").style.display = "none";
+    document.getElementById("resendOtp").style.display = "none";
+    document.getElementById("inputOtp").disabled = false;
+  }
+
+  // Start the initial timer
+  startTimer();
+</script>
+
+<!-- send ajax request  -->
+<script>
+  function submitForm() {
+    // Get form data
+    const otpInput = document.getElementById("inputOtp");
+    const otp = otpInput.value;
+    // Fetch API
+    fetch("/verify-user", {
+      method: "POST",
+      body: JSON.stringify({ otp }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else if (response.status === 400) {
+          showValidate(otpInput, "Invalid otp");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        // Handle the response data as needed
+        if (data.success) {
+          clearInterval(interval);
+          window.location.href = "/login";
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  function showValidate(input, message) {
+    var thisAlert = $(input).parent();
+    $(thisAlert).addClass("alert-validate");
+    $(thisAlert).attr("data-validate", message);
+  }
+</script>
+
+<script src="/public/javascript/jquery/jquery-2.2.4.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="/public/javascript/main.js"></script>
+<!--===============================================================================================-->
+<script src="/public/javascript/showPassword.js"></script>
+<!--===============================================================================================-->
+<%- include("../layouts/users/footer") %>

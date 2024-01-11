@@ -1,0 +1,48 @@
+<%- include("../layouts/admins/header") %>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <header class="card-header">
+                        <h4 class="card-title">Edit Category</h4>
+
+                        <% if (typeof message !== "undefined" ) { %>
+                            <div id="message" class="text-center error text-danger m-b-16"><%= message %></div>
+                            <% } %>
+                        
+                      
+    
+                    </header>
+                    <form id="categoryEditForm">
+                       
+                        <div class="mb-3">
+                            <label class="form-label">Category Name</label>
+                            <input name="categoryName" type="text" placeholder="Type here" class="form-control" value="<%= category.categoryName %>">
+                        </div>
+                        <p id="categoryError" class="text-danger"></p>
+                        <div class="mb-3">
+                            <label class="form-label">List/Unlist</label>
+                            <div>
+                                <div class="form-check form-check-inline" style="width: 45%;">
+                                    <input class="form-check-input" <% if (category.listed) { %> checked="" <% } %> name="list-unlist" value="list" type="radio">
+                                    <label class="form-check-label"> List </label>
+                                </div>
+                                <div class="form-check form-check-inline" style="width: 45%;">
+                                    <input class="form-check-input" <% if (!category.listed) { %> checked="" <% } %> name="list-unlist" value="unlist" type="radio">
+                                    <label class="form-check-label"> Unlist </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-md rounded font-sm hover-up" onclick="editCategory('<%= category._id %>')">Update Category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../layouts/admins/footer") %>

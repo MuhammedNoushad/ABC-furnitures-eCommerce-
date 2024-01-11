@@ -1,0 +1,123 @@
+
+<%- include("../layouts/users/header") %>
+
+<div class="products-catagories-area  ">
+  <div class="amado-pro-catagory ">
+        <div class="wrap-login100">
+          <form
+          id="signupForm"
+          class="login100-form validate-form p-l-55 p-r-55 p-t-178"
+        >
+          <span class="login100-form-title"> Sign Up </span>
+        
+          <div
+            class="wrap-input100 validate-input m-b-16"
+            data-validate="Please enter username"
+          >
+            <input
+            id="username"
+              class="input100"
+              type="text"
+              name="username"
+              placeholder="Username"
+            />
+            <span class="focus-input100"></span>
+          </div>
+        
+          <div
+            class="wrap-input100 validate-input m-b-16"
+            data-validate="Please enter email id"
+          >
+            <input
+              id="email"
+              class="input100"
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
+            <p id="emailError" class="text-danger"></p>
+            <span class="focus-input100"></span>
+          </div>
+        
+          <div
+            class="wrap-input100 validate-input m-b-16"
+            data-validate="Please enter mobile number"
+          >
+            <input
+            id="mobileNumber"
+              class="input100"
+              type="text"
+              name="mobile"
+              placeholder="Mobile Number"
+            />
+            <span class="focus-input100"></span>
+          </div>
+        
+          <div
+            class="wrap-input100 validate-input m-b-16"
+            data-validate="Please enter a strong password"
+          >
+            <input
+              id="password"
+              class="input100"
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+            <i class="bi bi-eye-slash" id="togglePassword"></i>
+        
+            <span class="focus-input100"></span>
+          </div>
+        
+          <div
+            class="wrap-input100 validate-input m-b-16"
+            data-validate="Passwords in both fields must match"
+          >
+            <input
+              id="confirmPassword"
+              class="input100"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+            />
+            <i class="bi bi-eye-slash" id="toggleConfirmPassword"></i>
+        
+            <span class="focus-input100"></span>
+          </div>
+        
+          <div class="container-login100-form-btn">
+            <button type="button" id="signupButton" class="login100-form-btn">Sign Up</button>
+          </div>
+        
+          <div class="flex-col-c p-t-30 p-b-20">
+            <span class="txt1 p-b-9"> Already on ABC? </span>
+        
+            <a href="/login" class="txt3"> Sign In </a>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+     
+
+    <script src="/public/javascript/jquery/jquery-2.2.4.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="/public/javascript/showPassword.js"></script>
+    <!--===============================================================================================-->
+    <%- include("../layouts/users/footer") %>
+
+

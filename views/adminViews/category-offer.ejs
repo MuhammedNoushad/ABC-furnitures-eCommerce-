@@ -1,0 +1,329 @@
+<%- include("../layouts/admins/header") %>
+
+<div class="screen-overlay"></div>
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="index.html" class="brand-wrap">
+            <img src="/public/assets/img/core-img/logo.png" class="logo" alt="Evara Dashboard">
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+        </div>
+    </div>
+    <nav>
+      <ul class="menu-aside ">
+          <li class="menu-item ">
+              <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                  <span class="text">Dashboard</span>
+              </a>
+          </li>
+          <li class="menu-item " >
+              <a class="menu-link" href="/admin/user-management"> <i class="icon material-icons md-comment"></i>
+                  <span class="text">Users</span>
+              </a>
+          </li>
+          <li class="menu-item ">
+              <a class="menu-link" href="/admin/products/product-management"> <i class="icon material-icons md-shopping_bag"></i>
+                  <span class="text">Products</span>
+              </a>
+          </li>
+          <li class="menu-item ">
+              <a class="menu-link" href="/admin/products/products-orders"> <i class="icon material-icons md-shopping_cart"></i>
+                  <span class="text">Orders</span>
+              </a>
+          </li>
+          <li class="menu-item  ">
+              <a class="menu-link" href="/admin/products/category-management"> <i class="icon material-icons md-add_box"></i>
+                  <span class="text">Categories</span>
+              </a>
+          </li>
+          <li class="menu-item  ">
+              <a class="menu-link" href="/admin/products/banner-management"> <i class="icon material-icons md-local_offer"></i>
+                  <span class="text">Banners</span>
+              </a>
+          </li>
+          <li class="menu-item has-submenu active">
+              <a href="#" class="menu-link"><i class="icon material-icons md-monetization_on"></i>
+                  <span class="text">Offers</span>
+              </a>
+              <div class="submenu">
+                  <a href="/admin/products/product-offers">Product offer</a>
+                  <a href="/admin/products/category-offers">Category offer</a>
+              </div>
+          </li>
+          <li class="menu-item has-submenu">
+              <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
+                  <span class="text">Transactions</span>
+              </a>
+              <div class="submenu">
+                  <a href="page-transactions-1.html">Transaction 1</a>
+                  <a href="page-transactions-2.html">Transaction 2</a>
+              </div>
+          </li>
+          <li class="menu-item has-submenu">
+              <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
+                  <span class="text">Account</span>
+              </a>
+              <div class="submenu">
+                  <a href="page-account-login.html">User login</a>
+                  <a href="page-account-register.html">User registration</a>
+                  <a href="page-error-404.html">Error 404</a>
+              </div>
+          </li>
+       
+          <li class="menu-item ">
+              <a class="menu-link" href="/admin/coupons"> <i class="icon material-icons md-stars"></i>
+                  <span class="text">Coupons</span> </a>
+          </li>
+          <li class="menu-item">
+              <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                  <span class="text">Statistics</span>
+              </a>
+          </li>
+      </ul>
+      <hr>
+      <ul class="menu-aside">
+          <li class="menu-item has-submenu">
+              <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                  <span class="text">Settings</span>
+              </a>
+              <div class="submenu">
+                  <a href="page-settings-1.html">Setting sample 1</a>
+                  <a href="page-settings-2.html">Setting sample 2</a>
+              </div>
+          </li>
+          <li class="menu-item">
+              <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                  <span class="text"> Starter page </span>
+              </a>
+          </li>
+      </ul>
+      <br>
+      <br>
+  </nav>
+</aside>
+
+<main class="main-wrap">
+  <header class="main-header navbar">
+    <div class="col-search">
+      <form class="searchform">
+        <div class="input-group">
+          <input
+            list="search_terms"
+            type="text"
+            class="form-control"
+            placeholder="Search term"
+          />
+          <button class="btn btn-light bg" type="button">
+            <i class="material-icons md-search"></i>
+          </button>
+        </div>
+        <datalist id="search_terms">
+          <option value="Products"></option>
+          <option value="New orders"></option>
+          <option value="Apple iphone"></option>
+          <option value="Ahmed Hassan"></option>
+        </datalist>
+      </form>
+    </div>
+    <div class="col-nav">
+      <button
+        class="btn btn-icon btn-mobile me-auto"
+        data-trigger="#offcanvas_aside"
+      >
+        <i class="material-icons md-apps"></i>
+      </button>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link btn-icon" href="#">
+            <i class="material-icons md-notifications animation-shake"></i>
+            <span class="badge rounded-pill">3</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-icon darkmode" href="#">
+            <i class="material-icons md-nights_stay"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="requestfullscreen nav-link btn-icon"
+            ><i class="material-icons md-cast"></i
+          ></a>
+        </li>
+        <li class="dropdown nav-item">
+          <a
+            class="dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="dropdownLanguage"
+            aria-expanded="false"
+            ><i class="material-icons md-public"></i
+          ></a>
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="dropdownLanguage"
+          >
+            <a class="dropdown-item text-brand" href="#"
+              ><img
+                src="/public/assets/imgs/theme/flag-us.png"
+                alt="English"
+              />English</a
+            >
+            <a class="dropdown-item" href="#"
+              ><img
+                src="/public/assets/imgs/theme/flag-fr.png"
+                alt="Français"
+              />Français</a
+            >
+            <a class="dropdown-item" href="#"
+              ><img
+                src="/public/assets/imgs/theme/flag-jp.png"
+                alt="Français"
+              />日本語</a
+            >
+            <a class="dropdown-item" href="#"
+              ><img
+                src="/public/assets/imgs/theme/flag-cn.png"
+                alt="Français"
+              />中国人</a
+            >
+          </div>
+        </li>
+        <li class="dropdown nav-item">
+          <a
+            class="dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="dropdownAccount"
+            aria-expanded="false"
+          >
+            <img
+              class="img-xs rounded-circle"
+              src="/public/assets/imgs/people/avatar2.jpg"
+              alt="User"
+          /></a>
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="dropdownAccount"
+          >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-perm_identity"></i>Edit Profile</a
+            >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-settings"></i>Account Settings</a
+            >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-account_balance_wallet"></i>Wallet</a
+            >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-receipt"></i>Billing</a
+            >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-help_outline"></i>Help center</a
+            >
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-danger" href="/admin/logout"
+              ><i class="material-icons md-exit_to_app"></i>Logout</a
+            >
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <div id="category-management" class="row">
+    <div class="card mb-4 mr-5 col-lg-">
+      
+      <header class="card-header">
+          <h4 class="card-title">Category Management</h4>
+          
+        
+
+      </header>
+      <div  class="card-body">
+          <div class="table-responsive">
+              <div class="table-responsive">
+                  <table class="table align-middle table-nowrap mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th class="align-middle" scope="col">Category Name</th>
+                          <th class="align-middle" scope="col">Date Created</th>
+                          <th class="align-middle" scope="col">Apply Offer</th>
+                        </tr>
+                      </thead>
+                      <tbody id="categoryTable">
+                        <% if (category.length > 0) { %>
+                          <% for (let i = 0; i < category.length; i++) { %>
+                            <tr id="category-<%= category[i]._id %>">
+                              <td><%= category[i].categoryName %></td>
+                              <td><%= category[i].createdOn %></td>
+                              <td>
+                                <% if (category[i].categoryOffer) { %>
+                                  <a href="#" id="offerButton"  data-bs-toggle="modal" data-bs-target="#removeOfferModal<%= category[i]._id %>">
+                                    <i class="fa-solid fa-eraser" style="color: #088178;"></i>Remove offer
+                                  </a>
+                                  <% } else { %>
+                                   
+                                    <a href="#" id="offerButton"  data-bs-toggle="modal" data-bs-target="#applyOfferModal<%= category[i]._id %>">
+                                      <i class="fa-solid fa-tags"></i>Apply Offer
+                                    </a>
+                                <% } %>
+                              </td>
+                            </tr>
+                          <% } %>
+                        <% } %>
+                      </tbody>
+                    </table>
+                    
+              </div>
+          </div> <!-- table-responsive end// -->
+      </div>
+  </div>
+ 
+</div>
+
+
+
+<!-- offer adding modal  -->
+<% for(let i=0; i<category.length; i++) { %>
+  <div class="modal fade" id="applyOfferModal<%= category[i]._id %>" tabindex="-1" aria-labelledby="applyOfferModalLabel<%= category[i]._id %>" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="applyOfferModalLabel<%= category[i]._id %>">Apply Offer</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <!-- Add your offer form fields here -->
+                  <label for="offerInput">Offer Percentage:</label>
+                  <input type="text" class="form-control" id="offerInput<%= category[i]._id %>" placeholder="Enter offer percentage">
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" onclick="submitOfferCategory('<%= category[i]._id %>')">Apply Offer</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <!-- Remove Offer Confirmation Modal -->
+    <div class="modal fade" id="removeOfferModal<%= category[i]._id %>" tabindex="-1" aria-labelledby="removeOfferModalLabel<%= category[i]._id %>" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="removeOfferModalLabel<%= category[i]._id %>">Remove Offer</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  Are you sure you want to remove the offer for <%= category[i].categoryName %>?
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-danger" onclick="removeOfferCategory('<%= category[i]._id %>')">Remove Offer</button>
+              </div>
+          </div>
+      </div>
+  </div>
+<%}%>
+
+
+<%- include("../layouts/admins/footer") %>

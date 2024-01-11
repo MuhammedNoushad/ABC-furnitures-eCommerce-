@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Title  -->
+    <title>ABC - Furniture | <%= title %></title>
+
+    <link rel="icon" href="/public/assets/img/core-img/favicon.ico" />
+
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/public/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/public/css/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/daterangepicker/daterangepicker.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/public/css/util.css" />
+    <link rel="stylesheet" type="text/css" href="/public/css/user-main.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <!--===============================================================================================-->
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!--===============================================================================================-->
+
+    <!-- Favicon  -->
+    <link rel="icon" href="/public/assets/img/core-imgfavicon.ico" />
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="/public/css/core-style.css" />
+
+    <!-- toaster message link  -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- tailwind  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+ 
+   <script src="https://checkout.razorpay.com/v1/checkout.js" ></script>
+
+     
+  </head>
+
+  <body>
+    <div class="search-wrapper section-padding-100">
+      <div class="search-close">
+        <i class="fa fa-close" aria-hidden="true"></i>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="search-content">
+              <form id="searchForm">
+                
+                <input
+                  type="search"
+                  name="search"
+                  id="search"
+                  placeholder="Type your keyword..."
+                />
+                <button type="submit" onclick="submitSearch()">
+                  <img src="/public/assets/img/core-img/search.png" alt="" />
+                </button>
+                <select  name="category" id="category">
+                  <option value="all">All Categories</option>
+                  <% for (let i = 0; i < category.length; i++) { %>
+                    <% const cat = category[i]; %>
+                    <option value="<%= cat._id %>"><%= cat.categoryName %></option>
+                  <% } %>
+                </select>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+
+    <!-- display banner in the home page  -->
+    <% if (currentPage === "home") { %>
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+          <% for (let i = 0; i < banner.length; i++) { %>
+
+            <div class="carousel-item <%= i === 0 ? 'active' : '' %> bg-gradient-to-r from-blue-500 to-indigo-500 p-4 bg-cover" style="background-image: url('/public/assets/uploads/<%=banner[i].imageUrl[0].filename %>');">
+              <div class="container mx-auto flex items-center justify-between">
+                <div class="text-white">
+                  <h2 class="text-2xl font-semibold text-white"><strong><%= banner[i].title %></strong></h2>
+                  <p class="mt-2 text-white"><%= banner[i].description %></p>
+                </div>
+                <p class="text-yellow-500 font-bold text-xl"><%= banner[i].offerPercentage %>% off</p>
+                <a href="/products-shop?id=<%= banner[i].offerCategory %>" class="bg-white text-blue-500 py-2 px-6 rounded-full hover:bg-blue-600 hover:text-white transition duration-300">Shop Now</a>
+              </div>
+            </div>
+          
+          <% } %>
+          
+          <!-- Add Pagination with a different style -->
+          <ol class="carousel-indicators mt-4 flex space-x-2">
+            <% for (let i = 0; i < banner.length; i++) { %>
+              <li data-bs-target="#carouselExample" data-bs-slide-to="<%= i %>" class="<%= i === 0 ? 'active' : '' %> rounded-full w-4 h-4 bg-blue-500"></li>
+            <% } %>
+          </ol>
+          </div>
+          <% } %>
+          
+          
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+      <!-- Mobile Nav (max width 767px)-->
+      <div class="mobile-nav">
+        <!-- Navbar Brand -->
+        <div class="amado-navbar-brand">
+          <a href="index.html"
+            ><img src="/public/assets/img/core-img/logo.png" alt=""
+          /></a>
+        </div>
+        <!-- Navbar Toggler -->
+        <div class="amado-navbar-toggler">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Header Area Start -->
+      <header class="header-area clearfix">
+        <!-- Close Icon -->
+        <div class="nav-close">
+          <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <!-- Logo -->
+        <div class="logo">
+          <a href="/"
+            ><img src="/public/assets/img/core-img/logo.png" alt=""
+          /></a>
+        </div>
+        <!-- Amado Nav -->
+        <nav class="amado-nav">
+          <ul>
+            <li class="<%= currentPage === "home" ? "active" : '' %>"><a href="/">Home</a></li>
+            <li class="<%= currentPage === "shop" ? "active" : '' %>"><a href="/products-shop">Shop</a></li>
+            <li class="<%= currentPage === "cart" ? "active" : '' %>"><a href="/add-to-cart">Cart</a></li>
+            <li class="<%= currentPage === "referral" ? "active" : '' %>"><a href="/referrals">Refer & Earn</a></li>
+          </ul>
+        </nav>
+        <!-- Button Group -->
+
+        <% if (!loggedIn) { %>
+        <div class="amado-btn-group mt-30 mb-100">
+          <a href="/login" class="btn amado-btn mb-15">LOGIN</a>
+        </div>
+
+        <% } else { %>
+
+        <div class="amado-btn-group mt-30 mb-100">
+          <a href="/user-profile" class="btn amado-btn mb-15">Profile</a>
+        </div>
+
+        <% } %>
+
+        <!-- Cart Menu -->
+        <div class="cart-fav-search mb-100">
+          <a href="/add-to-cart" class="cart-nav"
+            ><img src="/public/assets/img/core-img/cart.png" alt="" /> Cart
+            <span id="cart-number">(<%= cartCount %>)</span></a
+          >
+          <a href="/user-wishlist" class="fav-nav"
+            ><img src="/public/assets/img/core-img/favorites.png" alt="" />
+            Favourite</a
+          >
+          <a href="#" class="search-nav"
+            ><img src="/public/assets/img/core-img/search.png" alt="" />
+            Search</a
+          >
+        </div>
+        <!-- Social Button -->
+        <div class="social-info d-flex justify-content-between">
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+      </header>
+

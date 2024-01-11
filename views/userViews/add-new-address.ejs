@@ -1,0 +1,75 @@
+<%- include("../layouts/users/header") %>
+
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-title">
+                        <h2>Add new address</h2>
+                    </div>
+
+                    <form action="/add-new-address" method="post" onsubmit="return validate()">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" >
+                                <p class="text-danger" id="firstNameError"></p>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" >
+                                <p class="text-danger" id="lastNameError"></p>
+
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                                <p class="text-danger" id="emailError"></p>
+
+                            </div>
+                            <div class="col-12 mb-3">
+                                <select class="w-100" id="country" name="country">
+                                <option value="usa">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="ger">Germany</option>
+                                <option value="fra">France</option>
+                                <option value="ind">India</option>
+                                <option value="aus">Australia</option>
+                                <option value="bra">Brazil</option>
+                                <option value="cana">Canada</option>
+                            </select>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control mb-3" name="streetAddress" placeholder="Address" id="streetAddress">
+                                <p class="text-danger" id="streetAddressError"></p>
+
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" name="city" placeholder="Town" id="city">
+                                <p class="text-danger" id="cityError"></p>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="zipCode" placeholder="Zip Code" id="zipCode">
+                                <p class="text-danger" id="zipCodeError"></p>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="phoneNumber" min="0" placeholder="Phone No" id="phoneNumber">
+                                <p class="text-danger" id="phoneNumberError"></p>
+
+                            </div>
+                            <div class="cart-btn mt-30">
+                                <button type="submit" class="btn amado-btn w-100">Add address</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+</div>
+
+<%- include("../layouts/users/footer") %>

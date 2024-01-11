@@ -1,0 +1,92 @@
+<%- include("../layouts/users/header") %>
+
+
+<div class="shop_sidebar_area">
+  <!-- ##### Single Widget ##### -->
+  <div class="widget catagory mb-50">
+    <!-- Widget Title -->
+    <h2 class="widget-title mb-100 text-warning"><%= user.username %></h2>
+
+    <!--  Catagories  -->
+    <div class="catagories-menu">
+      <ul>
+        <li class=" mt-30"><a href="/user-profile">Profile</a></li>
+        <li class=" mt-30"><a href="/user-orders">My orders</a></li>
+        <li class=" mt-30 active"><a href="/user-address">Manage address</a></li>
+        <li class=" mt-30"><a href="/user-wishlist">My wishlist</a></li>
+        <li class=" mt-30"><a href="/user-wallet">My wallet</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="profile ml-100">
+ <div class="container">
+
+  <h3 class="text-warning profile-head">Manage your Address</h3>
+
+  <div class="card">
+    <div class="card-header">
+      Add New Address
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Click below to create a new address</h5>
+      <a href="/add-new-address" class="btn btn-custom-orange">Create Address</a>
+    </div>
+  </div>
+  <br><br>
+
+  <% if (!address || address.length === 0) { %>
+    <div class="card">
+      <div class="card-body">
+        
+          Add a address to checkout.
+      </div>
+    </div>
+   <% } else { %>
+    
+    
+    <form action="" method="post">
+        <div class="card">
+            <div class="card-header">
+                Your addresses
+            </div>
+            <div class="card-body">
+    
+                <% address.forEach(address => { %>
+    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="addressRadio" value="<%= address._id %>" checked>
+                        <label class="form-check-label" for="addressRadio1">
+                            <span><span><%= address.firstName %></span> <span><%= address.streetAddress %></span></span>
+                        </label>
+                    </div>
+                    <br>
+                    <span>
+                        <a href="/edit-address?id=<%= address._id %>" class="edit-link">Edit</a>
+                        <span><a href="#" onclick="deleteAddress('<%= address._id %>')" class="delete-link">Delete</a></span>
+                    </span>
+                    <hr class="border border-warning border-2 opacity-50">
+                <% }) %>
+    
+            </div>
+        </div>
+    </form>
+  <% } %>
+
+ </div>
+</div>
+
+ 
+
+<div id="deleteAddressModal" class="modal">
+  <div class="modal-content">
+    <p>Are you sure you want to delete this address?</p>
+    <div class="modal-btns">
+      <button id="deleteConfirmButton" class="modal-btn modal-btn-confirm">Delete</button>
+      <button id="cancelBtn" class="modal-btn modal-btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<%- include("../layouts/users/footer") %>

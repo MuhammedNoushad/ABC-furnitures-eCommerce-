@@ -1,0 +1,61 @@
+<%- include("../layouts/users/header") %>
+
+<div class="shop_sidebar_area">
+  <!-- ##### Single Widget ##### -->
+  <div class="widget catagory mb-50">
+    <!-- Widget Title -->
+    <h2 class="widget-title mb-100 text-warning"><%= user.username %></h2>
+
+    <!--  Catagories  -->
+    <div class="catagories-menu">
+      <ul>
+        <li class="mt-30"><a href="/user-profile">Profile</a></li>
+        <li class="mt-30"><a href="/user-orders">My orders</a></li>
+        <li class="mt-30"><a href="/user-address">Manage address</a></li>
+        <li class="mt-30"><a href="/user-wishlist">My wishlist</a></li>
+        <li class="mt-30 active"><a href="/user-wallet">My wallet</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="profile ml-100">
+  <div class="container">
+    <h3 class="text-warning profile-head">Wallet</h3>
+
+    <!-- Wallet Card -->
+    <div class="card wallet mt-40">
+      <div class="card-header">
+        <h5 class="card-title">Wallet Information</h5>
+      </div>
+      <div class="card-body">
+        <!-- Balance -->
+        <p class="card-text mb-2">
+          <strong>Balance: ₹<%= wallet.balance %></strong>
+        </p>
+
+        <!-- Transaction History -->
+        <!-- Transaction History -->
+          <p class="card-text mb-2">Transaction History:</p>
+          <ul class="list-group">
+            <% if (wallet.transactions && Array.isArray(wallet.transactions) && wallet.transactions.length > 0) { %>
+              <% for (let i = wallet.transactions.length - 1; i >= 0; i--) { %>
+                <% const transaction = wallet.transactions[i]; %>
+                <li class="list-group-item d-flex justify-content-between align-items-center <%= transaction.transactionType === 'credit' ? 'list-group-item-success' : 'list-group-item-danger' %>">
+                  <span><%= transaction.date %></span>
+                  <span>₹<%= transaction.amount %></span>
+                </li>
+              <% } %>
+              
+            <% } else { %>
+              <li class="list-group-item">No transactions available.</li>
+            <% } %>
+          </ul>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%- include("../layouts/users/footer") %>

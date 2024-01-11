@@ -1,0 +1,219 @@
+<%- include("../layouts/admins/header") %>
+
+
+<div class="screen-overlay"></div>
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <a href="index.html" class="brand-wrap">
+            <img src="/public/assets/img/core-img/logo.png" class="logo" alt="Evara Dashboard">
+        </a>
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside ">
+            <li class="menu-item ">
+                <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item " >
+                <a class="menu-link" href="/admin/user-management"> <i class="icon material-icons md-comment"></i>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a class="menu-link" href="/admin/products/product-management"> <i class="icon material-icons md-shopping_bag"></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a class="menu-link" href="/admin/products/products-orders"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li class="menu-item  ">
+                <a class="menu-link" href="/admin/products/category-management"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item  ">
+                <a class="menu-link" href="/admin/products/banner-management"> <i class="icon material-icons md-local_offer"></i>
+                    <span class="text">Banners</span>
+                </a>
+            </li>
+            <li class="menu-item has-submenu">
+                <a href="#" class="menu-link"><i class="icon material-icons md-monetization_on"></i>
+                    <span class="text">Offers</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/products/product-offers">Product offer</a>
+                    <a href="/admin/products/category-offers">Category offer</a>
+                </div>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
+                    <span class="text">Transactions</span>
+                </a>
+                <div class="submenu">
+                    <a href="page-transactions-1.html">Transaction 1</a>
+                    <a href="page-transactions-2.html">Transaction 2</a>
+                </div>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
+                    <span class="text">Account</span>
+                </a>
+                <div class="submenu">
+                    <a href="page-account-login.html">User login</a>
+                    <a href="page-account-register.html">User registration</a>
+                    <a href="page-error-404.html">Error 404</a>
+                </div>
+            </li>
+         
+            <li class="menu-item ">
+                <a class="menu-link" href="/admin/coupons"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Coupons</span> </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                    <span class="text">Statistics</span>
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+                <div class="submenu">
+                    <a href="page-settings-1.html">Setting sample 1</a>
+                    <a href="page-settings-2.html">Setting sample 2</a>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                    <span class="text"> Starter page </span>
+                </a>
+            </li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+    <main class="main-wrap">
+       
+        <section class="content-main">
+            <form action="/admin/products/post-new-product" method="post"  enctype="multipart/form-data" onsubmit="return validateAddProducts()">
+            <div class="row">
+                <div class="col-6">
+                    <div class="content-header">
+                        <h2 class="content-title">Add New Product</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>1. General info</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">
+                                        <label class="form-label">Product title</label>
+                                        <input name="productName" type="text" placeholder="Type here" id="product_title" class="form-control">
+                                        <p class="text-danger" id="nameError"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="description" placeholder="Type here" id="prod_description" class="form-control" rows="4"></textarea>
+                                        <p class="text-danger" id="descError"></p>
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                            <hr class="mb-4 mt-0">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>2.1 Market Price</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">
+                                        <label class="form-label">Cost in INR</label>
+                                        <input name="marketPrice" type="text" placeholder="₹0.00" id="product_regPrice" class="form-control">
+                                        <p class="text-danger" id="regPriceError"></p>
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>2.2 Sale Price</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">
+                                        <label class="form-label">Cost in INR</label>
+                                        <input name="salePrice" type="text" placeholder="₹0.00" id="product_salePrice" class="form-control">
+                                        <p class="text-danger" id="salePriceError"></p>
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                            <hr class="mb-4 mt-0">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>3. Category</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">
+
+                                        <% for( let i = 0; i < category.length; i++ ) { %>
+                                        
+                                            <label class="mb-2 form-check form-check-inline" style="width: 45%;">
+                                                <input class="form-check-input" name="myCategory" type="radio" value="<%= category[i]._id %>">
+                                                <span class="form-check-label"><%= category[i].categoryName %>  </span>
+                                            </label>
+                                        <% } %>
+
+                                        
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                            <hr class="mb-4 mt-0">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>4. Media</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">
+                                        <label class="form-label">Images</label>
+                                        <input class="form-control" type="file" name="images" multiple>
+                                        <p class="text-danger" id="brandError"></p>
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- .row end// -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>5 Quantity</h6>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <input name="quantity" type="number" placeholder="0" id="prod_stock" class="form-control">
+                                        <p class="text-danger" id="sotckError"></p>
+                                    </div>
+
+                                    <div class="text-center mt-9">
+                                        <button type="submit" class="btn btn-md rounded font-sm hover-up">Add Product</button>
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </form>
+        </section> <!-- content-main end// -->
+       
+    <%- include("../layouts/admins/footer") %>

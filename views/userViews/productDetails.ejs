@@ -1,0 +1,144 @@
+<%- include("../layouts/users/header") %>
+
+
+      <!-- Product Details Area Start -->
+      <div class="single-product-area section-padding-100 clearfix">
+        <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-50">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Chairs</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <%= products.productName %>
+              </li>
+            </ol>
+          </nav>
+
+          <div class="row">
+            
+            <div class="col-12 col-lg-7">
+              <div class="single_product_thumb">
+                <div
+                  id="product_details_slider"
+                  class="carousel slide"
+                  data-ride="carousel"
+                >
+
+                <ol class="carousel-indicators">
+
+                <% for( let i = 0; i < 4; i++ ) { %>
+                
+                  <li
+                      class="active"
+                      data-target="#product_details_slider"
+                      data-slide-to=<%= i %>
+                      
+                    >
+                          <img class="d-block w-100 " src="/public/assets/uploads/<%= products.image[i].filename %>" alt="Slide <%= i + 1 %>" />
+
+                  </li>
+
+                <% } %>
+
+           
+                  </ol>
+
+
+                  <div class="carousel-inner">
+
+
+                    <% for (let i = 0; i < 4; i++) { %>
+                      <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                        <a class="gallery_img" href="/public/assets/uploads/<%= products.image[i].filename %>">
+                          <img class="d-block img-fluid w-85 zoom-effect" src="/public/assets/uploads/<%= products.image[i].filename %>" alt="Slide <%= i + 1 %>" />
+                        </a>
+                      </div>
+                    <% } %>
+                    
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-12 col-lg-5">
+              <div class="single_product_desc">
+                <!-- Product Meta Data -->
+                <div class="product-meta-data">
+                  <div class="line"></div>
+                  <% if (products.salePrice === products.regularPrice) { %>
+                   
+                    <p class="product-price">₹<%= products.salePrice.toLocaleString() %></p>
+                    <% } else { %>
+                      <p class="product-price"><span>₹<%= products.salePrice.toLocaleString() %></span>
+                        <span class="oldPrice">₹<%= products.regularPrice.toLocaleString() %></span></p>
+                  <% } %>
+                  <a href="product-details.html">
+                    <h6><%= products.productName %></h6>
+                  </a>
+                  <!-- Ratings & Review -->
+                  <div
+                    class="ratings-review mb-15 d-flex align-items-center justify-content-between"
+                  >
+                    <div class="ratings">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div class="review">
+                      <a href="#">Write A Review</a>
+                    </div>
+                  </div>
+                  <!-- Avaiable -->
+                  <p class="avaibility">
+                    <i class="fa fa-circle"></i> 
+                    <%= products.quantity? 'In Stock' : 'Out Of Stock' %>
+                  </p>
+                </div>
+
+                <div class="short_overview my-5">
+                  <p>
+                    <%= products.description %>
+                  </p>
+                </div>
+
+                <p id="outOfStock" class="text-danger"></p>
+                <form class="cart clearfix" id="addToCartForm">
+                  <div class="cart-btn d-flex mb-50">
+                    <p>Qty</p>
+                    <div class="quantity">
+                      <input
+                        type="number"
+                        class="qty-text"
+                        id="qty"
+                        step="1"
+                        min="1"
+                        max="300"
+                        name="quantity"
+                        value="1"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn amado-btn"
+                    onclick="addToCartDetails('<%= products._id %>')"
+                  >
+                    Add to cart
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product Details Area End -->
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+
+<%- include("../layouts/users/footer") %>
+   

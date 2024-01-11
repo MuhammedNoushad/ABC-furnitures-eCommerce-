@@ -1,0 +1,75 @@
+<%- include("../layouts/users/header") %>
+
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-title">
+                        <h2>Edit address</h2>
+                    </div>
+
+                    <form action="/edit-address?id=<%= address._id %>" method="post" onsubmit="return validate()">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="firstName" id="firstName"  value="<%= address.firstName %>" required>
+                                <p class="text-danger" id="firstNameError"></p>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="lastName" id="lastName" value="<%= address.lastName %>" required>
+                                <p class="text-danger" id="lastNameError"></p>
+
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="email" class="form-control" name="email" id="email" value="<%= address.email %>" >
+                                <p class="text-danger" id="emailError"></p>
+
+                            </div>
+                            <div class="col-12 mb-3">
+                                <select class="w-100" id="country" name="country">
+                                    <option value="usa" <%= address.country === 'usa' ? 'selected' : '' %>>United States</option>
+                                    <option value="uk" <%= address.country === 'uk' ? 'selected' : '' %>>United Kingdom</option>
+                                    <option value="ger" <%= address.country === 'ger' ? 'selected' : '' %>>Germany</option>
+                                    <option value="fra" <%= address.country === 'fra' ? 'selected' : '' %>>France</option>
+                                    <option value="ind" <%= address.country === 'ind' ? 'selected' : '' %>>India</option>
+                                    <option value="aus" <%= address.country === 'aus' ? 'selected' : '' %>>Australia</option>
+                                    <option value="bra" <%= address.country === 'bra' ? 'selected' : '' %>>Brazil</option>
+                                    <option value="cana" <%= address.country === 'cana' ? 'selected' : '' %>>Canada</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control mb-3" name="streetAddress" id="streetAddress" value="<%= address.streetAddress %>" >
+                                <p class="text-danger" id="streetAddressError"></p>
+
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" name="city" id="city" value="<%= address.city %>" >
+                                <p class="text-danger" id="cityError"></p>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="zipCode" id="zipCode" value="<%= address.zipCode %>" >
+                                <p class="text-danger" id="zipCodeError"></p>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" min="0" value="<%= address.phoneNumber %>" >
+                                <p class="text-danger" id="phoneNumberError"></p>
+
+                            </div>
+                            <div class="cart-btn mt-30">
+                                <button type="submit" class="btn amado-btn w-100">Update address</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+</div>
+
+<%- include("../layouts/users/footer") %>

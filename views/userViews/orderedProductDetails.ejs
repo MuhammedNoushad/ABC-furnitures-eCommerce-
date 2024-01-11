@@ -1,0 +1,112 @@
+<%- include("../layouts/users/header") %>
+
+<div class="shop_sidebar_area">
+  <!-- ##### Single Widget ##### -->
+  <div class="widget catagory mb-50">
+    <!-- Widget Title -->
+    <h2 class="widget-title mb-100 text-warning"><%= user.username %></h2>
+
+    <!-- Catagories -->
+    <div class="catagories-menu">
+      <ul>
+        <li class="mt-30"><a href="/user-profile">Profile</a></li>
+        <li class="mt-30"><a href="/user-orders">My orders</a></li>
+        <li class="mt-30"><a href="/user-address">Manage address</a></li>
+        <li class="mt-30"><a href="/user-wishlist">My wishlist</a></li>
+        <li class="mt-30"><a href="/user-wallet">My wallet</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Product Details Section -->
+<div class="profile ml-100">
+  <div class="container">
+    <h2 class="text-orange">Ordered Product Details</h2>
+
+    <div class="row">
+      <!-- Display Product Image and Details -->
+      <div class="col-md-6">
+        <div class="row">
+          <!-- Image -->
+          <div class="col-md-12 mb-3">
+            <img
+              src="/public/assets/uploads/<%= product.image[0].filename %>"
+              alt="<%= product.productName %>"
+              class="img-fluid rounded"
+            />
+          </div>
+
+          <!-- Product Details -->
+          <div class="col-md-12">
+            <h3 class="text-orange"><%= product.productName %></h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display Address Details -->
+      <div class="col-md-6">
+        <h3 class="text-orange">Delivery Address</h3>
+        <p><%= order.user.username %></p>
+        <p><%= order.address.streetAddress %></p>
+        <p><%= order.address.city %> - <%= order.address.zipCode %></p>
+        <p><%= order.address.country %></p>
+        <p><strong>Phone Numbers:</strong> <%= order.address.phoneNumber %></p>
+
+        <!-- Display Total Price -->
+        <p class="mt-3">
+          <strong>Total Price:</strong> <%= order.totalPrice %>
+        </p>
+
+        <!-- Horizontal Line -->
+        <hr class="my-4 border-orange" />
+
+        <!-- Cancel Button -->
+        <% if (productData.productStatus === "Cancelled") { %>
+          <div>
+            <p class="text-danger">Order cancelled</p>
+          </div>
+        <% } else if (productData.productStatus === "Returned") { %>
+          <div>
+            <p class="text-danger">Order returned</p>
+          </div>
+        <% } else if (productData.productStatus === "Delivered") { %>
+          <div class="btn btn-primary">
+            <button onclick="initiateReturn('<%= order._id %>', '<%= product._id %>')">
+              Return Order
+            </button>
+          </div>
+          
+          <a class="btn btn-outline-secondary" href="/download-invoice?orderId=<%= order._id %>&productId=<%= product._id %>" >Download Invoice</a>
+        <% } else { %>
+          <div class="btn btn-danger">
+            <button onclick="confirmOrderDelete('<%= order._id %>', '<%= product._id %>')">
+              Cancel Order
+            </button>
+          </div>
+        <% } %>
+        
+
+        <!-- Back to Orders Link -->
+
+        <br /><br />
+        <a href="/user-orders" class="link">Back to My Orders</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- model confirm delete  -->
+
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <p>Are you sure you want to Cancel this order?</p>
+    <div class="modal-btns">
+      <button id="confirmBtn" class="modal-btn modal-btn-confirm">
+        Confirm
+      </button>
+      <button id="cancelBtn" class="modal-btn modal-btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+<%- include("../layouts/users/footer") %>

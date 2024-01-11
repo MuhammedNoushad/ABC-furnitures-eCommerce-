@@ -1,0 +1,52 @@
+<%- include("../layouts/users/header") %>
+
+
+<div class="shop_sidebar_area">
+  <!-- ##### Single Widget ##### -->
+  <div class="widget catagory mb-50">
+    <!-- Widget Title -->
+    <h2 class="widget-title mb-100 text-warning"><%= user.username %></h2>
+
+    <!--  Catagories  -->
+    <div class="catagories-menu">
+      <ul>
+        <li class=" mt-30"><a href="/user-profile">Profile</a></li>
+        <li class=" mt-30"><a href="/user-orders">My orders</a></li>
+        <li class=" mt-30"><a href="/user-address">Manage address</a></li>
+        <li class=" mt-30"><a href="/user-wishlist">My wishlist</a></li>
+        <li class=" mt-30"><a href="/user-wallet">My wallet</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="profile ml-100">
+ <div class="container ">
+
+    <div class="container mt-5">
+        <div class="card mx-auto " >
+          <div class="card-header bg-warning text-white">
+            Edit username
+          </div>
+          <div class="card-body">
+            <form method="post" action="/update-username" onsubmit="return usernameValidation()">
+              <div class="form-group">
+                <label for="username">Username:</label>
+              <p class="text-danger" id="usernameError"></p>
+
+                <input type="text" class="form-control" name="username" id="editUserName" placeholder="Enter your username" value="<%= user.username %>" required>
+              </div>
+              <button  class="btn btn-warning"> Update username</button>
+                   <div class="mt-3">
+
+                       <a href="/user-profile">back to profile</a>
+                   </div>
+            </form>
+          </div>
+        </div>
+      </div>
+ </div>
+</div>
+
+
+<%- include("../layouts/users/footer") %>

@@ -1,0 +1,69 @@
+/* /public/css/order-complete.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f8f8;
+}
+
+.container {
+    text-align: center;
+}
+
+.card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+
+
+img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    color: orange;
+    margin-top: 20px;
+}
+
+p {
+    color: #555;
+    line-height: 1.6;
+}
+
+a.back {
+    color: #f39c12; /* Orange color */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a.back:hover {
+    color: #e74c3c; /* Darker orange color on hover */
+}
+
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
