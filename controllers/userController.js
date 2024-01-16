@@ -126,12 +126,12 @@ const loadSignup = async (req, res) => {
 // send the email verification to sign up
 const signupUser = async (req, res) => {
   try {
-    console.log(req.body);
     const { username, email, mobile, password } = req.body;
     req.session.tempUserData = { username, email, mobile, password };
 
     const existUsername = await User.findOne({ username: username });
     const emailExisting = await User.findOne({ email: email });
+
 
     if (!existUsername) {
       if (!emailExisting) {
@@ -142,7 +142,6 @@ const signupUser = async (req, res) => {
           message: "Verification email sent. Redirect to /verify-user.",
         });
       } else {
-        console.log("existing email");
         res.status(409).json({
           success: false,
           errorType: "email",
@@ -150,7 +149,6 @@ const signupUser = async (req, res) => {
         });
       }
     } else {
-      console.log("existing user");
       res.status(409).json({
         success: false,
         errorType: "username",
@@ -158,7 +156,6 @@ const signupUser = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error.message);
     res.status(500).json({
       success: false,
       message: "Internal Server Error",
@@ -177,6 +174,8 @@ const verifyUser = async (req, res) => {
       ? await Cart.countDocuments({ user_id })
       : await Cart.countDocuments({ user_id: null });
     const category = await Category.find({});
+
+    console.log(userData);
 
     if (userData) {
       const passwordMatch = await bcrypt.compare(pass, userData.password);

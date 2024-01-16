@@ -12,6 +12,15 @@ const port = process.env.PORT || 3000;
 // connecting to mongo db database
 mongoose.connect(process.env.MONGODB_URI);
 
+mongoose.connection.on('connected', () => {
+  console.log('Connected to MongoDB Atlas');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB Atlas connection error:', err);
+});
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -274,7 +274,7 @@ const loadProducts = async (req, res) => {
         totalNumberOfPages,
         cartCount,
         wishlist,
-        selectedPriceRange: priceRange, // Pass the selected price range to the view
+        selectedPriceRange: priceRange, 
       });
     }
   } catch (error) {

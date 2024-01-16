@@ -95,8 +95,9 @@ user_route.get('/order-cancel/:orderId/:productId',auth.userLoggedIn,auth.checkB
 user_route.get('/order-return/:orderId/:productId',auth.userLoggedIn,auth.checkBlockedStatus,orderController.returnOrder)
 user_route.get("/user-wallet",auth.userLoggedIn,auth.checkBlockedStatus,walletController.getUserWallet)
 
-// order sucessfull 
+// order sucessfull & failure pages
 user_route.get("/success-page",auth.userLoggedIn,auth.checkBlockedStatus,orderController.orderSucessfull)
+user_route.get("/failure-page",auth.userLoggedIn,auth.checkBlockedStatus,orderController.orderFailure)
 
 // applying coupon code 
 user_route.post("/coupon/validate-coupon",auth.userLoggedIn,auth.checkBlockedStatus,couponController.validateCoupon)

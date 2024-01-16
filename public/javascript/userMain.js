@@ -8,7 +8,6 @@ function addToCart(productId) {
     contentType: "application/json",
     data: JSON.stringify({ is_blocked: true }),
     success: function (response) {
-      updateCartNumber(response.count);
     },
     error: function (xhr, status, error) {
       console.error("Failed to block user", error);
@@ -95,14 +94,6 @@ function removeFromWishlist(productId) {
     .catch((error) => {
       console.error("Error deleting product", error);
     });
-}
-
-// Function to update the cart number dynamically
-function updateCartNumber(newCount) {
-  const cartNumberElement = document.getElementById("cart-number");
-  if (cartNumberElement) {
-    cartNumberElement.innerText = `(${newCount})`;
-  }
 }
 
 // function to delete cart items
@@ -239,8 +230,8 @@ function updateCartNumber(data) {
 
 // cancel the order from user profile
 function confirmOrderDelete(orderId, productId) {
-  const modal = document.getElementById("deleteModal");
-  const confirmBtn = document.getElementById("confirmBtn");
+  const modal = document.getElementById("deleteModalCancel");
+  const confirmBtn = document.getElementById("confirmBtnCancel");
 
   modal.style.display = "block";
 
@@ -249,15 +240,15 @@ function confirmOrderDelete(orderId, productId) {
     modal.style.display = "none";
   };
 
-  document.getElementById("cancelBtn").onclick = function () {
+  document.getElementById("cancelBtnCancel").onclick = function () {
     modal.style.display = "none";
   };
 }
 
 // return the order from user profile
 function initiateReturn(orderId, productId) {
-  const modal = document.getElementById("deleteModal");
-  const confirmBtn = document.getElementById("confirmBtn");
+  const modal = document.getElementById("deleteModalReturn");
+  const confirmBtn = document.getElementById("confirmBtnReturn");
 
   modal.style.display = "block";
 
@@ -265,7 +256,7 @@ function initiateReturn(orderId, productId) {
     window.location.href = `/order-return/${orderId}/${productId}`;
     modal.style.display = "none";
   };
-  document.getElementById("cancelBtn").onclick = function () {
+  document.getElementById("cancelBtnReturn").onclick = function () {
     modal.style.display = "none";
   };
 }
@@ -456,7 +447,7 @@ function checkout(addressLength, cartLength) {
 
     const rzp1 = window.Razorpay(options);
     rzp1.on("payment.failed", function (response) {
-      alert("Razorpay payment failed");
+      window.location.href = "/failure-page"
     });
     rzp1.open();
   }
@@ -484,6 +475,8 @@ function checkout(addressLength, cartLength) {
         if (data.success) {
           window.location.href = "/success-page";
         } else {
+          window.location.href = "/failure-page";
+
         }
       },
       error: function (error) {

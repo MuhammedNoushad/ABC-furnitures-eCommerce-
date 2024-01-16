@@ -18,7 +18,7 @@
     "express-session": "^1.17.3",
     "handlebar": "^1.0.0",
     "moment": "^2.29.4",
-    "mongodb": "^6.3.0",
+    "mongodb": "3.7",
     "mongoose": "^8.0.1",
     "multer": "^1.4.5-lts.1",
     "nocache": "^4.0.0",

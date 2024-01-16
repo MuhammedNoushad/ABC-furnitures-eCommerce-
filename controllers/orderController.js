@@ -199,8 +199,6 @@ const getOrderDetails = async (req, res) => {
       return product.productId.equals(new ObjectId(productId));
     });
 
-    console.log(order);
-
     const cartCount = _id
       ? await Cart.countDocuments({ user_id: _id })
       : await Cart.countDocuments({ user_id: null });
@@ -854,22 +852,18 @@ async function fetchSaleReportData(selectedDate) {
 // for returning the order from the user profile
 const returnOrder = async (req, res) => {
   try {
-    console.log("hello");
     const { productId, orderId } = req.params;
     const productStatus = "Returned";
 
-    console.log(productId, orderId);
+
     const updatedOrder = await Order.updateOne(
-      {
-        "products.productId": new ObjectId(productId),
-      },
-      {
-        $set: { "products.$.productStatus": productStatus },
-      },
-      { new: true }
+      { _id: orderId, "products.productId": productId },
+      { $set: { "products.$[elem].productStatus": productStatus } },
+      { arrayFilters: [{ "elem.productId": productId }] }
     );
 
-    console.log(updatedOrder);
+
+
 
     const order = await Order.findById(orderId);
 
@@ -917,7 +911,6 @@ const returnOrder = async (req, res) => {
           { new: true }
         );
 
-        console.log(refundAmount);
         // add the product quantity to the product stock
         const updateStock = await Product.findByIdAndUpdate(productId, {
           $inc: { quantity: productQuantity },
@@ -936,7 +929,7 @@ const downloadInvoice = async (req, res) => {
   try {
     try {
       const { orderId, productId } = req.query;
-      const userId = req.session.user_id;
+      const userId = req.session._id;
 
       // Fetch the order details with product and address information
       const order = await Order.findById(orderId);
@@ -947,7 +940,6 @@ const downloadInvoice = async (req, res) => {
         (product) => product.productId.toString() === productId
       );
 
-      console.log(selectedProduct);
       // Fetch user details
       const user = await User.findById(userId);
 
@@ -958,18 +950,17 @@ const downloadInvoice = async (req, res) => {
         date: order.date,
         paymentMethod: order.payment,
         orderStatus: order.status,
-        name: order.address.fullName,
+        name: user.username,
         number: order.address.phoneNumber,
         house: order.address.streetAddress,
-        pincode: order.address.pinCode,
-        town: order.address.townCity,
-        state: order.address.state,
+        pincode: order.address.zipCode,
+        town: order.address.city,
         products: [
           {
             quantity: selectedProduct.quantity,
             description: product.productName,
-            price: selectedProduct.price,
-            total: selectedProduct.price * selectedProduct.quantity,
+            price: selectedProduct.productPrice,
+            total: selectedProduct.totalPrice,
             "tax-rate": 0,
           },
         ],
@@ -982,11 +973,11 @@ const downloadInvoice = async (req, res) => {
         client: {
           company: "Customer Address",
           zip: order.address.zipCode,
-          city: order.address.townCity,
+          city: order.address.city,
           address: order.address.streetAddress,
         },
         information: {
-          number: "order" + order.id,
+          orderId: "order" + order.id,
           date: order.date,
         },
         "bottom-notice": "Happy shopping and visit ABC furnitures again",
@@ -995,9 +986,11 @@ const downloadInvoice = async (req, res) => {
       // Generate PDF using easyinvoice
       const pdfResult = await easyinvoice.createInvoice({
         ...invoiceData,
-        bottomNotice: "Happy shopping and visit flock again",
+        bottomNotice: "Happy shopping and visit ABC again",
       });
       const pdfBuffer = Buffer.from(pdfResult.pdf, "base64");
+
+      console.log(pdfResult, pdfBuffer);
 
       // Set HTTP headers for the PDF response
       res.setHeader(
@@ -1026,6 +1019,11 @@ const orderSucessfull = async (req, res) => {
   res.render("orderComplete");
 };
 
+// show order failure page
+const orderFailure = async (req, res) => {
+  res.render("orderFailure");
+};
+
 // exporting modules
 module.exports = {
   cashOnDeliveryOrder,
@@ -1045,4 +1043,5 @@ module.exports = {
   downloadExcel,
   returnOrder,
   downloadInvoice,
+  orderFailure,
 };
