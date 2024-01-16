@@ -219,7 +219,6 @@ function editCategory(categoryId) {
       "list-unlist": selectedList,
     };
 
-    console.log(data);
 
     fetch("/admin/category/add-updated-category", {
       method: "POST",

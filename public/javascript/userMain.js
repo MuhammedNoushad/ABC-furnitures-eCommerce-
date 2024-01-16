@@ -140,7 +140,6 @@ function confirmDelete(productId) {
       })
       .then((data) => {
         if (data.success) {
-          console.log('hy');
           deleteCartItems(productId);
           updateSubtotal(data);
           updateCartNumber(data);

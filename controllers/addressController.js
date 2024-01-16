@@ -16,7 +16,6 @@ const addNewAddress = async (req, res) => {
       ? await Cart.countDocuments({ user_id })
       : await Cart.countDocuments({ user_id: null });
 
-    console.log(cartCount);
     res.render("add-new-address", {
       loggedIn,
       title: "Add Address",

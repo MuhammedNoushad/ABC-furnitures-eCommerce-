@@ -321,7 +321,6 @@ const checkoutProduct = async (req, res) => {
     const products = await Product.find({ _id: { $in: productIds } });
     const coupons = await Coupon.find({});
     const wallet = await Wallet.findOne({ userId: user_id });
-    console.log(wallet);
 
     res.render("checkout", {
       loggedIn,

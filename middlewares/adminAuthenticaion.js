@@ -11,7 +11,6 @@ const  adminLoggedIn= async (req, res, next) => {
   
   const adminNotLoggedIn = async (req, res, next) => {
     if (!req.session.isAdminAuth) {
-        console.log(req.session.isAuth);
       next();
     } else {
       res.redirect("/admin");

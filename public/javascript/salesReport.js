@@ -51,11 +51,9 @@ async function downloadExcel() {
 // to call the sales reports regarding to the specific date 
 function updateSalesReport() {
 
-    console.log('hy');
 
     const selectedDate = document.getElementById('daterange').value;
 
-    console.log(selectedDate);
 
     // Construct the URL with the selected date as a query parameter
     const apiUrl = `/admin/orders/sales-report?date=${selectedDate}`;

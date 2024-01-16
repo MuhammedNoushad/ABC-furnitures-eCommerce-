@@ -73,7 +73,6 @@ const loadDashboard = async (req, res) => {
       return totalRevenue + orderRevenue;
     }, 0);
 
-
     if (category) {
       res.status(200).render("dashboard", {
         title: "Admin Dashboard",

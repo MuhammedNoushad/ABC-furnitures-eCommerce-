@@ -1,166 +1,193 @@
 <%- include("../layouts/admins/header") %>
 
-
 <body>
-    <div class="screen-overlay"></div>
-    <aside class="navbar-aside" id="offcanvas_aside">
-        <div class="aside-top">
-            <a href="index.html" class="brand-wrap">
-                <img src="/public/assets/img/core-img/logo.png" class="logo" alt="Evara Dashboard">
-            </a>
-            <div>
-                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
-            </div>
-        </div>
-        <nav>
-            <ul class="menu-aside ">
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
-                        <span class="text">Dashboard</span>
-                    </a>
-                </li>
-                <li class="menu-item " >
-                    <a class="menu-link" href="/admin/user-management"> <i class="icon material-icons md-comment"></i>
-                        <span class="text">Users</span>
-                    </a>
-                </li>
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/products/product-management"> <i class="icon material-icons md-shopping_bag"></i>
-                        <span class="text">Products</span>
-                    </a>
-                </li>
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/products/products-orders"> <i class="icon material-icons md-shopping_cart"></i>
-                        <span class="text">Orders</span>
-                    </a>
-                </li>
-                <li class="menu-item  ">
-                    <a class="menu-link" href="/admin/products/category-management"> <i class="icon material-icons md-add_box"></i>
-                        <span class="text">Categories</span>
-                    </a>
-                </li>
-                <li class="menu-item  ">
-                    <a class="menu-link" href="/admin/products/banner-management"> <i class="icon material-icons md-local_offer"></i>
-                        <span class="text">Banners</span>
-                    </a>
-                </li>
-                <li class="menu-item has-submenu">
-                    <a href="#" class="menu-link"><i class="icon material-icons md-monetization_on"></i>
-                        <span class="text">Offers</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="/admin/products/product-offers">Product offer</a>
-                        <a href="/admin/products/category-offers">Category offer</a>
-                    </div>
-                </li>
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
-                        <span class="text">Transactions</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-transactions-1.html">Transaction 1</a>
-                        <a href="page-transactions-2.html">Transaction 2</a>
-                    </div>
-                </li>
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
-                        <span class="text">Account</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-account-login.html">User login</a>
-                        <a href="page-account-register.html">User registration</a>
-                        <a href="page-error-404.html">Error 404</a>
-                    </div>
-                </li>
-             
-                <li class="menu-item active">
-                    <a class="menu-link" href="/admin/coupons"> <i class="icon material-icons md-stars"></i>
-                        <span class="text">Coupons</span> </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
-                        <span class="text">Statistics</span>
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <ul class="menu-aside">
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
-                        <span class="text">Settings</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-settings-1.html">Setting sample 1</a>
-                        <a href="page-settings-2.html">Setting sample 2</a>
-                    </div>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
-                        <span class="text"> Starter page </span>
-                    </a>
-                </li>
-            </ul>
-            <br>
-            <br>
-        </nav>
-    </aside>
-    <main class="main-wrap">
+  <div class="screen-overlay"></div>
+  <aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+      <a href="index.html" class="brand-wrap">
+        <img
+          src="/public/assets/img/core-img/logo.png"
+          class="logo"
+          alt="Evara Dashboard"
+        />
+      </a>
+      <div>
+        <button class="btn btn-icon btn-aside-minimize">
+          <i class="text-muted material-icons md-menu_open"></i>
+        </button>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu-aside">
+        <li class="menu-item">
+          <a class="menu-link" href="/admin">
+            <i class="icon material-icons md-home"></i>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="/admin/user-management">
+            <i class="icon material-icons md-comment"></i>
+            <span class="text">Users</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="/admin/products/product-management">
+            <i class="icon material-icons md-shopping_bag"></i>
+            <span class="text">Products</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="/admin/products/products-orders">
+            <i class="icon material-icons md-shopping_cart"></i>
+            <span class="text">Orders</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="/admin/products/category-management">
+            <i class="icon material-icons md-add_box"></i>
+            <span class="text">Categories</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="/admin/products/banner-management">
+            <i class="icon material-icons md-local_offer"></i>
+            <span class="text">Banners</span>
+          </a>
+        </li>
+        <li class="menu-item has-submenu">
+          <a href="#" class="menu-link"
+            ><i class="icon material-icons md-monetization_on"></i>
+            <span class="text">Offers</span>
+          </a>
+          <div class="submenu">
+            <a href="/admin/products/product-offers">Product offer</a>
+            <a href="/admin/products/category-offers">Category offer</a>
+          </div>
+        </li>
 
-        <section class="content-main mt-30">
-            <div class="row">
-                <div class="col-12">
-                    <div class="content-header col-8">
-                        <h2 class="content-title">Add New Coupon</h2>
-                    </div>
-                    <div class="col-lg-8">
-                        <form id="formIdCoupons" onsubmit="return editedCouponSubmit('<%= coupon._id %>');">
-                            <div class="mb-4 mt-3">
-                                <label for="couponName" class="form-label">Coupon code</label>
-                                <input type="text" placeholder="Type here" name="couponCode" class="form-control" id="couponName" value="<%= coupon.couponCode %>">
-                                <p id="nameError" class="text-danger"></p>
-                            </div>
-        
-                            <div class="mb-4 mt-3">
-                                <label for="couponDescription" class="form-label">Description</label>
-                                <input type="text" placeholder="Type here" name="description" class="form-control" id="couponDescription" value="<%= coupon.description %>">
-                                <p id="descriptionError" class="text-danger"></p>
-                            </div>
-        
-                            <div class="row gx-3">
-                                <div class="mb-4 mt-3 col-md-6">
-                                    <label for="offerPrice" class="form-label">Discount amount</label>
-                                    <input type="text" placeholder="Type here" name="discountAmount" class="form-control" id="offerPrice" value="<%= coupon.discountAmount %>">
-                                    <p id="offerPriceError" class="text-danger"></p>
-                                </div>
-        
-                                <div class="mb-4 mt-3 col-md-6">
-                                    <label for="minimumAmount" class="form-label">Minimum purchase</label>
-                                    <input type="text" name="minimumPurchase" placeholder="Type here" class="form-control" id="minimumAmount" value="<%= coupon.minimumPurchase %>">
-                                    <p id="minimumAmountError" class="text-danger"></p>
-                                </div>
-                            </div>
-                           
-        
-                            <div class="mb-4 mt-3">
-                                <label for="expiryDate" class="form-label">Expiry Date</label>
-                                <div class="mb-4 mt-3">
-                                    <input type="text" placeholder="Type here" name="couponCode" class="form-control" id="couponName" value=" <%= coupon.expirationDate.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }) %>" disabled>
-                                </div>
-                                <input type="date" placeholder="Type here" name="expirationDate" class="form-control" id="expiryDate" >
-                                <p id="expiryDateError" class="text-danger"></p>
-                            </div>
-                            
-                            <div class="mb-4">
+        <li class="menu-item active">
+          <a class="menu-link" href="/admin/coupons">
+            <i class="icon material-icons md-stars"></i>
+            <span class="text">Coupons</span>
+          </a>
+        </li>
+      </ul>
+      <hr />
 
-                                <button type="submit"  class="btn btn-md rounded font-sm hover-up" >Update Coupon</button>
-                            </div>
-                        </form>
-                    </div>
+      <br />
+      <br />
+    </nav>
+  </aside>
+  <main class="main-wrap">
+    <section class="content-main mt-30">
+      <div class="row">
+        <div class="col-12">
+          <div class="content-header col-8">
+            <h2 class="content-title">Add New Coupon</h2>
+          </div>
+          <div class="col-lg-8">
+            <form
+              id="formIdCoupons"
+              onsubmit="return editedCouponSubmit('<%= coupon._id %>');"
+            >
+              <div class="mb-4 mt-3">
+                <label for="couponName" class="form-label">Coupon code</label>
+                <input
+                  type="text"
+                  placeholder="Type here"
+                  name="couponCode"
+                  class="form-control"
+                  id="couponName"
+                  value="<%= coupon.couponCode %>"
+                />
+                <p id="nameError" class="text-danger"></p>
+              </div>
+
+              <div class="mb-4 mt-3">
+                <label for="couponDescription" class="form-label"
+                  >Description</label
+                >
+                <input
+                  type="text"
+                  placeholder="Type here"
+                  name="description"
+                  class="form-control"
+                  id="couponDescription"
+                  value="<%= coupon.description %>"
+                />
+                <p id="descriptionError" class="text-danger"></p>
+              </div>
+
+              <div class="row gx-3">
+                <div class="mb-4 mt-3 col-md-6">
+                  <label for="offerPrice" class="form-label"
+                    >Discount amount</label
+                  >
+                  <input
+                    type="text"
+                    placeholder="Type here"
+                    name="discountAmount"
+                    class="form-control"
+                    id="offerPrice"
+                    value="<%= coupon.discountAmount %>"
+                  />
+                  <p id="offerPriceError" class="text-danger"></p>
                 </div>
-            </div>
-        </section>
-        
 
+                <div class="mb-4 mt-3 col-md-6">
+                  <label for="minimumAmount" class="form-label"
+                    >Minimum purchase</label
+                  >
+                  <input
+                    type="text"
+                    name="minimumPurchase"
+                    placeholder="Type here"
+                    class="form-control"
+                    id="minimumAmount"
+                    value="<%= coupon.minimumPurchase %>"
+                  />
+                  <p id="minimumAmountError" class="text-danger"></p>
+                </div>
+              </div>
 
+              <div class="mb-4 mt-3">
+                <label for="expiryDate" class="form-label">Expiry Date</label>
+                <div class="mb-4 mt-3">
+                  <input
+                    type="text"
+                    placeholder="Type here"
+                    name="couponCode"
+                    class="form-control"
+                    id="couponName"
+                    value=" <%= coupon.expirationDate.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }) %>"
+                    disabled
+                  />
+                </div>
+                <input
+                  type="date"
+                  placeholder="Type here"
+                  name="expirationDate"
+                  class="form-control"
+                  id="expiryDate"
+                />
+                <p id="expiryDateError" class="text-danger"></p>
+              </div>
 
-<%- include("../layouts/admins/footer") %>
+              <div class="mb-4">
+                <button
+                  type="submit"
+                  class="btn btn-md rounded font-sm hover-up"
+                >
+                  Update Coupon
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include("../layouts/admins/footer") %>
+  </main>
+</body>

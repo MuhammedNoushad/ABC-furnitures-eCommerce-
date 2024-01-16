@@ -52,53 +52,17 @@
                     <a href="/admin/products/category-offers">Category offer</a>
                 </div>
             </li>
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
-                    <span class="text">Transactions</span>
-                </a>
-                <div class="submenu">
-                    <a href="page-transactions-1.html">Transaction 1</a>
-                    <a href="page-transactions-2.html">Transaction 2</a>
-                </div>
-            </li>
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
-                    <span class="text">Account</span>
-                </a>
-                <div class="submenu">
-                    <a href="page-account-login.html">User login</a>
-                    <a href="page-account-register.html">User registration</a>
-                    <a href="page-error-404.html">Error 404</a>
-                </div>
-            </li>
+        
+           
          
             <li class="menu-item ">
                 <a class="menu-link" href="/admin/coupons"> <i class="icon material-icons md-stars"></i>
                     <span class="text">Coupons</span> </a>
             </li>
-            <li class="menu-item">
-                <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
-                    <span class="text">Statistics</span>
-                </a>
-            </li>
+           
         </ul>
         <hr>
-        <ul class="menu-aside">
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
-                    <span class="text">Settings</span>
-                </a>
-                <div class="submenu">
-                    <a href="page-settings-1.html">Setting sample 1</a>
-                    <a href="page-settings-2.html">Setting sample 2</a>
-                </div>
-            </li>
-            <li class="menu-item">
-                <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
-                    <span class="text"> Starter page </span>
-                </a>
-            </li>
-        </ul>
+        
         <br>
         <br>
     </nav>
@@ -175,18 +139,24 @@
                             <input type="text" placeholder="Search..." class="form-control">
                         </div>
                         <div class="col-lg-2 col-6 col-md-3">
-                            <select class="form-select">
-                                <option>Status</option>
-                                <option>Active</option>
-                                <option>Disabled</option>
-                                <option>Show all</option>
+                            <select class="form-select" onchange="redirectToStatus(this)">
+                                <option value="" disabled selected>Status</option>
+                                <option value="All">All Status</option>
+                                <option value="Delivered">Delivered</option>
+                                <option value="Cancelled">Cancelled</option>
+                                <option value="Shipped">Dispatched</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Returned">Returned</option>
+
                             </select>
                         </div>
-                        <div class="col-lg-2 col-6 col-md-3">
-                            <select class="form-select">
-                                <option>Show 20</option>
-                                <option>Show 30</option>
-                                <option>Show 40</option>
+                        <div class="col-lg-2 col-6 col-md-3" >
+                            <select class="form-select" onchange="orderPerPage(this)">
+                                <option value="" disabled>show</option>
+                                <option value="All">Show All</option>
+                                <option value="10">Show 10</option>
+                                <option value="20">Show 20</option>
+                                <option value="30">Show 30</option>
                             </select>
                         </div>
                     </div>
@@ -229,7 +199,7 @@
                                                             badge-soft-danger
                                                         <% } else if (order.status === 'Pending') { %>
                                                             badge-soft-warning
-                                                        <% } else if (order.status === 'Return') { %>
+                                                        <% } else if (order.status === 'Returned') { %>
                                                             badge-soft-info
                                                         <% } else if (order.status === 'Dispatched') { %>
                                                             badge-soft-primary

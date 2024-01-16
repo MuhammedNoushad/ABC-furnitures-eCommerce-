@@ -195,3 +195,29 @@ function validateEditProducts() {
   }
   return true;
 }
+
+// function to sort the order details
+function redirectToStatus(select) {
+  // Get the selected value from the dropdown
+  var status = select.value;
+
+  // Check if the selected status is empty
+  if (status === "All") {
+    // If it's empty, navigate to "/admin/orderDetails"
+    window.location.href = "/admin/products/products-orders";
+  } else {
+    // If a status is selected, navigate to "/admin/orderDetails?id=" + status
+    window.location.href = "/admin/products/products-orders?status=" + status;
+  }
+}
+
+// sort by orders per page
+function orderPerPage(select) {
+  const ordersPerPage = select.value;
+
+  if (ordersPerPage === "All")
+    window.location.href = "/admin/products/products-orders";
+  else
+    window.location.href =
+      "/admin/products/products-orders?ordersPerPage=" + ordersPerPage;
+}

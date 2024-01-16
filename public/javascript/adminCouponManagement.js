@@ -96,7 +96,6 @@ function createCoupon() {
     },
   })
     .then(response => {
-      console.log(response);
       if (!response.ok) {
         // Handle non-success status codes (e.g., 400, 500)
         console.log("Error response:", response.status);

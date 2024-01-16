@@ -306,12 +306,23 @@ const calculateRefundedAmount = (products, productId) => {
 const orderManagement = async (req, res) => {
   try {
     const page = req.query.page || 0;
-    const ordersPerPage = 10;
+    const ordersPerPage = req.query.ordersPerPage || 10;
+
+    // Get the selected category (status) from query parameters
+    const selectedCategory = req.query.status;
+
+    // Define an empty query object
+    let query = {};
+
+    // If a category is selected, add it to the query
+    if (selectedCategory) {
+      query.status = selectedCategory;
+    }
 
     const totalNumberOfOrders = await Order.find({}).countDocuments();
     const totalNumberOfPages = Math.ceil(totalNumberOfOrders / ordersPerPage);
 
-    const orders = await Order.find({})
+    const orders = await Order.find(query)
       .sort({ date: -1 })
       .skip(page * ordersPerPage)
       .limit(ordersPerPage)
@@ -855,15 +866,11 @@ const returnOrder = async (req, res) => {
     const { productId, orderId } = req.params;
     const productStatus = "Returned";
 
-
     const updatedOrder = await Order.updateOne(
       { _id: orderId, "products.productId": productId },
       { $set: { "products.$[elem].productStatus": productStatus } },
       { arrayFilters: [{ "elem.productId": productId }] }
     );
-
-
-
 
     const order = await Order.findById(orderId);
 

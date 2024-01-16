@@ -1,260 +1,340 @@
 <%- include("../layouts/admins/header") %>
 <div class="screen-overlay"></div>
-    <aside class="navbar-aside" id="offcanvas_aside">
-        <div class="aside-top">
-            <a href="index.html" class="brand-wrap">
-                <img src="/public/assets/img/core-img/logo.png" class="logo" alt="Evara Dashboard">
-            </a>
-            <div>
-                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
-            </div>
+<aside class="navbar-aside" id="offcanvas_aside">
+  <div class="aside-top">
+    <a href="index.html" class="brand-wrap">
+      <img
+        src="/public/assets/img/core-img/logo.png"
+        class="logo"
+        alt="Evara Dashboard"
+      />
+    </a>
+    <div>
+      <button class="btn btn-icon btn-aside-minimize">
+        <i class="text-muted material-icons md-menu_open"></i>
+      </button>
+    </div>
+  </div>
+  <nav>
+    <ul class="menu-aside">
+      <li class="menu-item active">
+        <a class="menu-link" href="/admin">
+          <i class="icon material-icons md-home"></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="/admin/user-management">
+          <i class="icon material-icons md-comment"></i>
+          <span class="text">Users</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="/admin/products/product-management">
+          <i class="icon material-icons md-shopping_bag"></i>
+          <span class="text">Products</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="/admin/products/products-orders">
+          <i class="icon material-icons md-shopping_cart"></i>
+          <span class="text">Orders</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="/admin/products/category-management">
+          <i class="icon material-icons md-add_box"></i>
+          <span class="text">Categories</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="/admin/products/banner-management">
+          <i class="icon material-icons md-local_offer"></i>
+          <span class="text">Banners</span>
+        </a>
+      </li>
+      <li class="menu-item has-submenu">
+        <a href="#" class="menu-link"
+          ><i class="icon material-icons md-monetization_on"></i>
+          <span class="text">Offers</span>
+        </a>
+        <div class="submenu">
+          <a href="/admin/products/product-offers">Product offer</a>
+          <a href="/admin/products/category-offers">Category offer</a>
         </div>
-        <nav>
-            <ul class="menu-aside ">
-                <li class="menu-item active">
-                    <a class="menu-link" href="/admin"> <i class="icon material-icons md-home"></i>
-                        <span class="text">Dashboard</span>
-                    </a>
-                </li>
-                <li class="menu-item " >
-                    <a class="menu-link" href="/admin/user-management"> <i class="icon material-icons md-comment"></i>
-                        <span class="text">Users</span>
-                    </a>
-                </li>
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/products/product-management"> <i class="icon material-icons md-shopping_bag"></i>
-                        <span class="text">Products</span>
-                    </a>
-                </li>
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/products/products-orders"> <i class="icon material-icons md-shopping_cart"></i>
-                        <span class="text">Orders</span>
-                    </a>
-                </li>
-                <li class="menu-item  ">
-                    <a class="menu-link" href="/admin/products/category-management"> <i class="icon material-icons md-add_box"></i>
-                        <span class="text">Categories</span>
-                    </a>
-                </li>
-                <li class="menu-item  ">
-                    <a class="menu-link" href="/admin/products/banner-management"> <i class="icon material-icons md-local_offer"></i>
-                        <span class="text">Banners</span>
-                    </a>
-                </li>
-                <li class="menu-item has-submenu">
-                    <a href="#" class="menu-link"><i class="icon material-icons md-monetization_on"></i>
-                        <span class="text">Offers</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="/admin/products/product-offers">Product offer</a>
-                        <a href="/admin/products/category-offers">Category offer</a>
-                    </div>
-                </li>
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
-                        <span class="text">Transactions</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-transactions-1.html">Transaction 1</a>
-                        <a href="page-transactions-2.html">Transaction 2</a>
-                    </div>
-                </li>
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
-                        <span class="text">Account</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-account-login.html">User login</a>
-                        <a href="page-account-register.html">User registration</a>
-                        <a href="page-error-404.html">Error 404</a>
-                    </div>
-                </li>
-             
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/coupons"> <i class="icon material-icons md-stars"></i>
-                        <span class="text">Coupons</span> </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
-                        <span class="text">Statistics</span>
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <ul class="menu-aside">
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
-                        <span class="text">Settings</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-settings-1.html">Setting sample 1</a>
-                        <a href="page-settings-2.html">Setting sample 2</a>
-                    </div>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
-                        <span class="text"> Starter page </span>
-                    </a>
-                </li>
-            </ul>
-            <br>
-            <br>
-        </nav>
-    </aside>
-    <main class="main-wrap">
-        <header class="main-header navbar">
-            <div class="col-search">
-                <form class="searchform">
-                    <div class="input-group">
-                        <input list="search_terms" type="text" class="form-control" placeholder="Search term">
-                        <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
-                    </div>
-                    <datalist id="search_terms">
-                        <option value="Products">
-                        <option value="New orders">
-                        <option value="Apple iphone">
-                        <option value="Ahmed Hassan">
-                    </datalist>
-                </form>
-            </div>
-            <div class="col-nav">
-                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link btn-icon" href="#">
-                            <i class="material-icons md-notifications animation-shake"></i>
-                            <span class="badge rounded-pill">3</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage" aria-expanded="false"><i class="material-icons md-public"></i></a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
-                            <a class="dropdown-item text-brand" href="#"><img src="/public/assets/imgs/theme/flag-us.png" alt="English">English</a>
-                            <a class="dropdown-item" href="#"><img src="/public/assets/imgs/theme/flag-fr.png" alt="Français">Français</a>
-                            <a class="dropdown-item" href="#"><img src="/public/assets/imgs/theme/flag-jp.png" alt="Français">日本語</a>
-                            <a class="dropdown-item" href="#"><img src="/public/assets/imgs/theme/flag-cn.png" alt="Français">中国人</a>
-                        </div>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/public/assets/imgs/people/avatar2.jpg" alt="User"></a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
-                            <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-account_balance_wallet"></i>Wallet</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </header>
+      </li>
 
-        
+      <li class="menu-item">
+        <a class="menu-link" href="/admin/coupons">
+          <i class="icon material-icons md-stars"></i>
+          <span class="text">Coupons</span>
+        </a>
+      </li>
+    </ul>
+    <hr />
 
-        <section class="content-main">
-            <div class="content-header">
-                <div>
-                    <h2 class="content-title card-title">Sale Report </h2>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div>
-                    <input type="text" placeholder="Search order ID" class="form-control bg-white">
-                    <br>
-                    <button onclick="downloadPDF()" class="btn btn-md rounded font-sm hover-up">Download pdf</button>
-                    <button onclick="downloadExcel()" class="btn btn-md rounded font-sm hover-up">Download Excel</button>
-                </div>
-            </div>
-            <div class="card mb-4">
-                <header class="card-header">
-                    <div class="row gx-3">
-                     
-                        <!-- Add an input field for selecting a date -->
-                        <label for="daterange">Sort by daterange</label>
-                        <input type="text" id="daterange" name="daterange"  value="<%= date %>" />
-                      
-                    </div>
-                </header> <!-- card-header end// -->
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <!-- saleReport.ejs -->
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>ORDER ID</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Payment Method</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- for loop using ejs -->
-                                <% for (const order of orders) { %>
-                                    <% for (let j = 0; j < order.products.length; j++) { %>
-                                        <% const currentProduct = order.products[j].productId; %>
-                                        <tr>
-                                            <td><%= order._id %></td>
-                                            <td><%= order.date%></td>
-                                            <% if (order.user) { %>
-                                                <td><%= order.user.username %></td>
-                                            <% } else { %>
-                                                <td>User not available</td>
-                                            <% } %>
-                                            <!-- Check if currentProduct is not null before accessing its properties -->
-                                            <td>
-                                                <% if (currentProduct && currentProduct.productName) { %>
-                                                    <%= currentProduct.productName %>
-                                                <% } else { %>
-                                                    Product not available
-                                                <% } %>
-                                            </td>
-                                            <td><%= order.products[j].quantity %></td>
-                                            <td><%= order.products[j].totalPrice %></td>
-                                            <td><span class="badge rounded-pill alert-success">Delivered</span></td>
-                                            <td><%= order.payment %></td>
-                                        </tr>
-                                    <% } %>
-                                <% } %>
-                            </tbody>
-                        </table>
-                    </div> <!-- table-responsive //end -->
-                </div> <!-- card-body end// -->
-            </div> <!-- card end// -->
-           
-        </section> <!-- content-main end// -->
+    <br />
+    <br />
+  </nav>
+</aside>
+<main class="main-wrap">
+  <header class="main-header navbar">
+    <div class="col-search">
+      <form class="searchform">
+        <div class="input-group">
+          <input
+            list="search_terms"
+            type="text"
+            class="form-control"
+            placeholder="Search term"
+          />
+          <button class="btn btn-light bg" type="button">
+            <i class="material-icons md-search"></i>
+          </button>
+        </div>
+        <datalist id="search_terms">
+          <option value="Products"></option>
+          <option value="New orders"></option>
+          <option value="Apple iphone"></option>
+          <option value="Ahmed Hassan"></option>
+        </datalist>
+      </form>
+    </div>
+    <div class="col-nav">
+      <button
+        class="btn btn-icon btn-mobile me-auto"
+        data-trigger="#offcanvas_aside"
+      >
+        <i class="material-icons md-apps"></i>
+      </button>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link btn-icon" href="#">
+            <i class="material-icons md-notifications animation-shake"></i>
+            <span class="badge rounded-pill">3</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-icon darkmode" href="#">
+            <i class="material-icons md-nights_stay"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="requestfullscreen nav-link btn-icon"
+            ><i class="material-icons md-cast"></i
+          ></a>
+        </li>
+        <li class="dropdown nav-item">
+          <a
+            class="dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="dropdownLanguage"
+            aria-expanded="false"
+            ><i class="material-icons md-public"></i
+          ></a>
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="dropdownLanguage"
+          >
+            <a class="dropdown-item text-brand" href="#"
+              ><img
+                src="/public/assets/imgs/theme/flag-us.png"
+                alt="English"
+              />English</a
+            >
+            <a class="dropdown-item" href="#"
+              ><img
+                src="/public/assets/imgs/theme/flag-fr.png"
+                alt="Français"
+              />Français</a
+            >
+            <a class="dropdown-item" href="#"
+              ><img
+                src="/public/assets/imgs/theme/flag-jp.png"
+                alt="Français"
+              />日本語</a
+            >
+            <a class="dropdown-item" href="#"
+              ><img
+                src="/public/assets/imgs/theme/flag-cn.png"
+                alt="Français"
+              />中国人</a
+            >
+          </div>
+        </li>
+        <li class="dropdown nav-item">
+          <a
+            class="dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="dropdownAccount"
+            aria-expanded="false"
+          >
+            <img
+              class="img-xs rounded-circle"
+              src="/public/assets/imgs/people/avatar2.jpg"
+              alt="User"
+          /></a>
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="dropdownAccount"
+          >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-perm_identity"></i>Edit Profile</a
+            >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-settings"></i>Account Settings</a
+            >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-account_balance_wallet"></i>Wallet</a
+            >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-receipt"></i>Billing</a
+            >
+            <a class="dropdown-item" href="#"
+              ><i class="material-icons md-help_outline"></i>Help center</a
+            >
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-danger" href="/admin/logout"
+              ><i class="material-icons md-exit_to_app"></i>Logout</a
+            >
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-        <script src="/public/javascript/salesReport.js"></script>
-        
-        <script>
-            var $j = jQuery.noConflict();
-        
-            $j(document).ready(function() {
-                $j(function() {
-                    $j('input[name="daterange"]').daterangepicker({
-                        opens: 'left'
-                    }, function(start, end, label) {
-                        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-                    }).on('apply.daterangepicker', function(ev, picker) {
-                // Call your function here
-                updateSalesReport();
-            });;
-                });
-            });
-        </script>
-        
-        
-<%- include("../layouts/admins/footer") %>
+  <section class="content-main">
+    <div class="content-header">
+      <div>
+        <h2 class="content-title card-title">Sale Report</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Search order ID"
+          class="form-control bg-white"
+        />
+        <br />
+        <button
+          onclick="downloadPDF()"
+          class="btn btn-md rounded font-sm hover-up"
+        >
+          Download pdf
+        </button>
+        <button
+          onclick="downloadExcel()"
+          class="btn btn-md rounded font-sm hover-up"
+        >
+          Download Excel
+        </button>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <header class="card-header">
+        <div class="row gx-3">
+          <!-- Add an input field for selecting a date -->
+          <label for="daterange">Sort by daterange</label>
+          <input
+            type="text"
+            id="daterange"
+            name="daterange"
+            value="<%= date %>"
+          />
+        </div>
+      </header>
+      <!-- card-header end// -->
+      <div class="card-body">
+        <div class="table-responsive">
+          <!-- saleReport.ejs -->
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ORDER ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Status</th>
+                <th scope="col">Payment Method</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- for loop using ejs -->
+              <% for (const order of orders) { %> <% for (let j = 0; j <
+              order.products.length; j++) { %> <% const currentProduct =
+              order.products[j].productId; %>
+              <tr>
+                <td><%= order._id %></td>
+                <td><%= order.date%></td>
+                <% if (order.user) { %>
+                <td><%= order.user.username %></td>
+                <% } else { %>
+                <td>User not available</td>
+                <% } %>
+                <!-- Check if currentProduct is not null before accessing its properties -->
+                <td>
+                  <% if (currentProduct && currentProduct.productName) { %> <%=
+                  currentProduct.productName %> <% } else { %> Product not
+                  available <% } %>
+                </td>
+                <td><%= order.products[j].quantity %></td>
+                <td><%= order.products[j].totalPrice %></td>
+                <td>
+                  <span class="badge rounded-pill alert-success"
+                    >Delivered</span
+                  >
+                </td>
+                <td><%= order.payment %></td>
+              </tr>
+              <% } %> <% } %>
+            </tbody>
+          </table>
+        </div>
+        <!-- table-responsive //end -->
+      </div>
+      <!-- card-body end// -->
+    </div>
+    <!-- card end// -->
+  </section>
+  <!-- content-main end// -->
+
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+  ></script>
+  <script src="/public/javascript/salesReport.js"></script>
+
+  <script>
+    var $j = jQuery.noConflict();
+
+    $j(document).ready(function () {
+      $j(function () {
+        $j('input[name="daterange"]')
+          .daterangepicker(
+            {
+              opens: "left",
+            },
+            function (start, end, label) {}
+          )
+          .on("apply.daterangepicker", function (ev, picker) {
+            // Call your function here
+            updateSalesReport();
+          });
+      });
+    });
+  </script>
+
+  <%- include("../layouts/admins/footer") %>
+</main>

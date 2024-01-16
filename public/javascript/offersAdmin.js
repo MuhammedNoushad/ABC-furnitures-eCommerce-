@@ -31,7 +31,6 @@ function submitOffer(productId) {
       }
     })
     .then((data) => {
-      console.log(data);
       if (data.success) {
         offerPercentage = "";
         $("#applyOfferModal" + productId).modal("hide");
@@ -47,28 +46,12 @@ function submitOffer(productId) {
 }
 
 function updatePrice(amount, productId) {
-  console.log(productId);
 
   const salePriceInput = document.getElementById(`salePrice${productId}`);
   salePriceInput.innerText = amount;
 }
 
-// to change the add offer to remove offer
-// function changeButtonAndModel(productId, buttonText) {
-//     console.log(productId);
 
-//     const offerButton = document.getElementById("offerButton");
-
-//     if (offerButton) {
-//       offerButton.innerText = buttonText === "Remove offer" ? "Remove offer" : "Apply offer";
-//       offerButton.setAttribute(
-//         "data-bs-target",
-//         buttonText === "Remove offer"
-//           ? `#removeOfferModal${productId}`
-//           : `#applyOfferModal${productId}`
-//       );
-//     }
-//   }
 
 // remove the offer on the product
 function removeOffer(productId) {
